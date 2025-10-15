@@ -66,15 +66,17 @@ export function Home() {
           <div className="content-canvas">
             <h1>HELLO! I'M Dmytro.</h1>
             <p>I'm awesome human being!</p>
-            <small>Also, I build amazing apps!</small>
 
             <div className="pasted-image-container">
               <img src={photo} alt="A pixelated self portrait of Dmytro." />
             </div>
 
-            <a href="#" className="win95-button">
-              View My Work {"->"}
-            </a>
+            <div>
+              <small>Also, I build amazing apps!</small>
+              <button className="win95-button">
+                View My Work {"->"}
+              </button>
+            </div>
           </div>
           <canvas className="paint-canvas" {...{
             ref: paintCanvasProps.ref,
@@ -83,9 +85,14 @@ export function Home() {
       </div>
 
       <footer className="color-palette">
-        {colors.map(c => (
-          <div className="color-swatch" style={{ backgroundColor: c }} onClick={() => paintCanvasProps.setColor(c)}></div>
-        ))}
+        <div className="color-selected">
+          <div className="color-swatch" style={{ backgroundColor: paintCanvasProps.activeColor }}></div>
+        </div>
+        <div className="color-swatches">
+          {colors.map(c => (
+            <button className="color-swatch" style={{ backgroundColor: c }} onClick={() => paintCanvasProps.setColor(c)}></button>
+          ))}
+        </div>
       </footer>
     </div>
   )

@@ -101,6 +101,7 @@ const usePaintCanvas = (options: {
     isToolActive: (t: TTool) => t === tool,
     setTool,
     setColor,
+    activeColor: color,
   };
 };
 
