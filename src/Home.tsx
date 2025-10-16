@@ -1,5 +1,8 @@
 import usePaintCanvas from "./hooks/useCanvasDraw";
 import photo from './assets/dmytro-pixelated.png'
+import pencil from './assets/pencil.png'
+import spray from './assets/spray.png'
+import eraser from './assets/eraser.png'
 
 import './Home.css'
 
@@ -24,9 +27,9 @@ export function Home() {
     "#ff00ff",
   ];
   const tools = [
-    'paint',
-    'spray',
-    'erase'
+    ['paint', pencil],
+    ['spray', spray],
+    ['erase', eraser],
   ]
 
   return (
@@ -52,8 +55,10 @@ export function Home() {
       <div className="paint-body">
         <aside className="toolbar">
           <div className="separator"></div>
-          {tools.map(tool => (
-            <div className={`tool-icon ${paintCanvasProps.isToolActive(tool) ? 'active' : ''}`} onClick={() => paintCanvasProps.setTool(tool)}>{tool}</div>
+          {tools.map(([tool, imgSrc]) => (
+            <div className={`tool-icon ${paintCanvasProps.isToolActive(tool) ? 'active' : ''}`} onClick={() => paintCanvasProps.setTool(tool)}>
+              <img src={imgSrc} alt={tool} />
+            </div>
           ))}
         </aside>
 
