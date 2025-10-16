@@ -1,0 +1,80 @@
+.taskbar-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 32px; /* A typical height for an old-school taskbar */
+  z-index: 1000; /* Ensure it's on top of all other content */
+
+  background-color: #c0c0c0; /* The classic Windows gray */
+  border-top: 2px solid #ffffff; /* Raised top border */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  /* font-family: "Arial", sans-serif; */
+}
+
+.taskbar-windows {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Space between the window buttons */
+  height: 100%;
+}
+
+.taskbar-window-button {
+  height: 26px; /* Slightly shorter than the taskbar */
+  padding: 0 10px 0 5px;
+  background-color: #c0c0c0;
+  border: 2px solid #ffffff;
+  border-bottom-color: #808080;
+  border-right-color: #808080;
+
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent text from wrapping */
+  font-size: 14px;
+  font-family: var(--ui-font-family), sans-serif;
+
+  &.active {
+    /* This simulates a "pressed in" look */
+    border: 2px solid #fff;
+    box-shadow: inset 0px 0px 0px 1px #c0c0c0;
+    background-color: #e9e9e9;
+    border-top-color: #808080;
+    border-left-color: #808080;
+  }
+
+  img {
+    height: 18px;
+    margin-right: 5px;
+  }
+}
+
+.taskbar-tray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 6px;
+}
+
+.tray-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.taskbar-clock {
+  height: 26px;
+  min-width: 75px;
+  padding: 0 8px;
+  border: 2px inset #ffffff;
+  border-top-color: #808080;
+  border-left-color: #808080;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
