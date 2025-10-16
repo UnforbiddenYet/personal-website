@@ -1,6 +1,7 @@
 @font-face {
   font-family: "MS Sans Serif";
-  src: local("MS Sans Serif"), url("/MS Sans Serif 8pt.ttf") format("opentype");
+  src: local("MS Sans Serif"),
+    url("./assets/MS Sans Serif 8pt.ttf") format("opentype");
 }
 
 :root {
