@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "MS Sans Serif";
+  src: local("MS Sans Serif"), url("/MS Sans Serif 8pt.ttf") format("opentype");
+}
+
+:root {
+  --ui-font-family: "MS Sans Serif";
+  --canvas-text-font-family: "Silkscreen";
+}
