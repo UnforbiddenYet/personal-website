@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './Taskbar.css';
+import type { WindowID } from './types';
 // import soundIcon from './assets/sound-icon.png'; // We'll create this small icon
 
-type Title = string;
-type Icon = string;
-type OpenWindows = [Title, Icon]
+type OpenWindowConfig = {
+  title: string,
+  icon: string,
+  id: WindowID
+}
 
-export const Taskbar = ({ activeWindow, openWindows }: {
-  activeWindow: string,
-  openWindows: OpenWindows | undefined,
+export const Taskbar = ({ activeWindowId, openWindows, onClick }: {
+  activeWindowId: WindowID | undefined,
+  openWindows: OpenWindowConfig[],
+  onClick: (id: WindowID) => void,
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -29,10 +33,10 @@ export const Taskbar = ({ activeWindow, openWindows }: {
     <div className="taskbar-container">
       <div className="taskbar-windows">
         {/* Dynamically render a button for each "open window" */}
-        {openWindows?.map(([title, iconSrc]) => (
-          <button key={title} className={`taskbar-window-button ${activeWindow === title ? 'active' : ''}`}>
-            <img src={iconSrc} alt={title} />
-            <span>{title}</span>
+        {openWindows?.map((config) => (
+          <button key={config.title} className={`taskbar-window-button ${activeWindowId === config.id ? 'active' : ''}`} onClick={() => onClick(config.id)}>
+            <img src={config.icon} alt={config.title} />
+            <span>{config.title}</span>
           </button>
         ))}
       </div>

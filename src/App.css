@@ -8,3 +8,9 @@
   --ui-font-family: "MS Sans Serif";
   --canvas-text-font-family: "Silkscreen";
 }
+
+dialog {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

@@ -1,0 +1,85 @@
+/* --- The Main Paint Window --- */
+.window {
+  width: 900px;
+  height: 600px;
+  background-color: #c0c0c0; /* Classic grey */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-shadow: 2px 2px 0 #000000;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 1. Title Bar --- */
+.title-bar {
+  background: linear-gradient(
+    to right,
+    #000080,
+    #1084d0
+  ); /* Windows gradient blue */
+  color: #ffffff;
+  padding: 4px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.window-controls button {
+  font-family: "Silkscreen", sans-serif;
+  background-color: #c0c0c0;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+  font-weight: bold;
+
+  &:active:not(:disabled) {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* --- 2. Menu Bar --- */
+.menu-bar {
+  background-color: #c0c0c0;
+  padding: 3px 0;
+}
+.menu-bar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 4px;
+  display: flex;
+}
+.menu-bar li button {
+  text-decoration: none;
+  border: none;
+  background: none;
+  color: #000;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.menu-bar li button:hover {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+/* --- 3, 4, 5. Main Body --- */
+/* .paint-body {
+  display: flex; */
+/* flex-grow: 1; Allows this section to fill remaining vertical space */
+/* min-height: 0; Fix for flexbox overflow */
+/* } */

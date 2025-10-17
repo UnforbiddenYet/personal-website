@@ -36,7 +36,7 @@
   align-items: center;
   white-space: nowrap; /* Prevent text from wrapping */
   font-size: 14px;
-  font-family: var(--ui-font-family), sans-serif;
+  font-family: inherit;
 
   &.active {
     /* This simulates a "pressed in" look */

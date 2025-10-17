@@ -3,84 +3,14 @@
   font-family: var(--ui-font-family), sans-serif;
   font-size: 16px;
   /* This makes the font sharp and not anti-aliased */
-  font-smooth: never;
-  -webkit-font-smoothing: none;
+  /* font-smooth: never;
+  -webkit-font-smoothing: none; */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   min-height: 100vh;
   min-width: 100vw;
   margin: 0;
-}
-
-/* --- The Main Paint Window --- */
-.paint-window {
-  width: 900px;
-  height: 600px;
-  background-color: #c0c0c0; /* Classic grey */
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #000000;
-  border-bottom: 2px solid #000000;
-  box-shadow: 2px 2px 0 #000000;
-  padding: 3px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- 1. Title Bar --- */
-.title-bar {
-  background: linear-gradient(
-    to right,
-    #000080,
-    #1084d0
-  ); /* Windows gradient blue */
-  color: #ffffff;
-  padding: 4px 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 14px;
-}
-
-.window-controls button {
-  font-family: "Silkscreen", sans-serif;
-  background-color: #c0c0c0;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
-  font-weight: bold;
-}
-.window-controls button:active {
-  border-top: 1px solid #000000;
-  border-left: 1px solid #000000;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-}
-
-/* --- 2. Menu Bar --- */
-.menu-bar {
-  background-color: #c0c0c0;
-  padding: 3px 0;
-}
-.menu-bar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 4px;
-  display: flex;
-}
-.menu-bar li a {
-  text-decoration: none;
-  color: #000;
-  padding: 2px 8px;
-}
-.menu-bar li a:hover {
-  background-color: #000080;
-  color: #ffffff;
 }
 
 /* --- 3, 4, 5. Main Body --- */
@@ -218,10 +148,10 @@
   height: 50px;
   flex-shrink: 0;
   border-top: 1px solid #808080;
-  padding: 5px 10px;
+  padding: 4px 10px;
   /* Placeholder styles - replace with your image */
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-content: center;
   gap: 10px;
 }
@@ -241,7 +171,8 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  gap: 4px;
+  column-gap: 4px;
+  row-gap: 1px;
 }
 
 .color-swatch {
@@ -253,4 +184,36 @@
 
 .color-swatch:active {
   border: 1px solid #fff;
+}
+
+.window-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.desktop-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    background: none;
+    font-family: inherit;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+    align-items: center;
+    cursor: pointer;
+
+    &:active {
+      border: 1px dashed black;
+    }
+  }
+
+  span {
+    color: #fff;
+  }
 }
