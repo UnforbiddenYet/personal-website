@@ -12,6 +12,7 @@ import { Taskbar } from "./components/Taskbar";
 import { Window } from "./components/Window";
 import { useMemo, useState } from "react";
 import { WindowIDs, type WindowID } from "./components/types";
+import { useWindowManager } from "./hooks/useWindowManager";
 
 const WindowConfigsMap = {
   [WindowIDs.about]: {
@@ -41,8 +42,6 @@ const WindowConfigsMap = {
   },
 }
 
-let highestZindex = 0;
-
 export function Home() {
   const paintCanvasProps = usePaintCanvas({ color: "#000", lineWidth: 4 });
   const colors = [
@@ -68,37 +67,52 @@ export function Home() {
     ['spray', spray],
     ['erase', eraser],
   ]
-  const [openWindowIds, setOpenWindowIds] = useState<Array<WindowID>>([WindowIDs.about, WindowIDs.contact])
-  const [activeWindowId, setActiveWindowId] = useState(openWindowIds.at(-1));
-  const openWindows = openWindowIds.map(id => WindowConfigsMap[id]);
+  // const [openWindowIds, setOpenWindowIds] = useState<Array<WindowID>>([WindowIDs.about, WindowIDs.contact])
 
-  const openDialog = (id: WindowID) => {
-    const newWindowIds = [...openWindowIds, id];
-    if (!openWindowIds.includes(id)) {
-      setOpenWindowIds(newWindowIds)
-    }
-    setActiveWindowId(id)
-  }
+  const windowManager = useWindowManager([{
+    id: WindowIDs.about,
+    width: 900,
+    height: 600
+  }, {
+    id: WindowIDs.contact,
+    width: 900,
+    height: 600
+  }]);
+  const openWindows = windowManager.windows.map(c => WindowConfigsMap[c.id]);
 
-  const closeDialog = (id: WindowID) => {
-    const newWindowIds = openWindowIds.filter(openId => openId !== id)
-    setOpenWindowIds(newWindowIds)
-    setActiveWindowId(newWindowIds.at(-1))
-  }
+  // const openDialog = (id: WindowID) => {
+  //   const newWindowIds = [...openWindowIds, id];
+  //   if (!openWindowIds.includes(id)) {
+  //     setOpenWindowIds(newWindowIds)
+  //   }
+  //   setActiveWindowId(id)
+  // }
+
+  // const closeDialog = (id: WindowID) => {
+  //   const newWindowIds = openWindowIds.filter(openId => openId !== id)
+  //   setOpenWindowIds(newWindowIds)
+  //   setActiveWindowId(newWindowIds.at(-1))
+  // }
 
   return (
     <div className="desktop">
       <div className="desktop-shortcuts">
         {Object.values(WindowConfigsMap).map(config => (
-          <button onClick={() => openDialog(config.id)}>
+          <button onClick={() => windowManager.openWindow({
+            id: config.id,
+            width: 900,
+            height: 600
+          })}>
             <img src={config.icon} width={40} />
             <span>{config.title}</span>
           </button>
         ))}
       </div>
-      {!!activeWindowId && <dialog className="window-dialog" id={activeWindowId} open>
-        {activeWindowId === WindowIDs.about &&
+      {windowManager.windows.map(window => {
+        if (window.id === WindowIDs.about) return (
           <Window
+            key={window.id}
+            position={{ x: window.x, y: window.y, z: window.z, }}
             title="Dmytro's website - Painttt"
             controls={[
               {
@@ -117,7 +131,7 @@ export function Home() {
                 icon: 'X',
                 label: 'Close',
                 onClick: () => {
-                  closeDialog(activeWindowId)
+                  windowManager.closeWindow(window.id)
                 }
               }
             ]}
@@ -187,71 +201,82 @@ export function Home() {
               </footer>
             </>
           </Window>
-        }
-        {activeWindowId === WindowIDs.blog && (
+        )
+        if (window.id === WindowIDs.blog) return (
           <Window
+            key={window.id}
+            position={{ x: window.x, y: window.y, z: window.z, }}
             title="Blog"
             controls={[
               {
                 icon: 'X',
                 label: 'Close',
                 onClick: () => {
-                  closeDialog(activeWindowId)
+                  windowManager.closeWindow(window.id)
+
                 }
               }
             ]}
             menu={[]}
           >blog</Window>
-        )}
-        {activeWindowId === WindowIDs.contact && (
+        )
+        if (window.id === WindowIDs.contact) return (
           <Window
+            key={window.id}
+            position={{ x: window.x, y: window.y, z: window.z, }}
             title="Contact Me"
             controls={[
               {
                 icon: 'X',
                 label: 'Close',
                 onClick: () => {
-                  closeDialog(activeWindowId)
+                  windowManager.closeWindow(window.id)
+
                 }
               }
             ]}
             menu={[]}
           >Contact Me</Window>
-        )}
-        {activeWindowId === WindowIDs.projects && (
+        )
+        if (window.id === WindowIDs.projects) return (
           <Window
+            key={window.id}
+            position={{ x: window.x, y: window.y, z: window.z, }}
             title="projects"
             controls={[
               {
                 icon: 'X',
                 label: 'Close',
                 onClick: () => {
-                  closeDialog(activeWindowId)
+                  windowManager.closeWindow(window.id)
+
                 }
               }
             ]}
             menu={[]}
           >projects</Window>
-        )}
-        {activeWindowId === WindowIDs.stuff && (
+        )
+        if (window.id === WindowIDs.stuff) return (
           <Window
+            key={window.id}
+            position={{ x: window.x, y: window.y, z: window.z, }}
             title="stuff"
             controls={[
               {
                 icon: 'X',
                 label: 'Close',
                 onClick: () => {
-                  closeDialog(activeWindowId)
+                  windowManager.closeWindow(window.id)
+
                 }
               }
             ]}
             menu={[]}
           >stuff</Window>
-        )}
-      </dialog>
-      }
+        )
+      })}
 
-      <Taskbar openWindows={openWindows} activeWindowId={activeWindowId} onClick={openDialog} />
+      <Taskbar openWindows={openWindows} activeWindowId={windowManager.activeWindowId} onClick={windowManager.bringToFront} />
     </div>
   )
 }

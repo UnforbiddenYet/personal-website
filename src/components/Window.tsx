@@ -14,17 +14,23 @@ type Props = {
     title: string,
     disabled?: boolean,
     onClick?: () => void,
-  }[]
+  }[],
+  position: {
+    x: number,
+    y: number,
+    z: number,
+  }
 }
 
 export const Window = ({
   title,
   controls,
   menu,
-  children
+  children,
+  position
 }: PropsWithChildren<Props>) => {
   return (
-    <div className="window">
+    <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z }}>
       <header className="title-bar">
         <div className="title-text">{title}</div>
         <div className="window-controls">

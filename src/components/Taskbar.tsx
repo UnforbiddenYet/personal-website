@@ -10,7 +10,7 @@ type OpenWindowConfig = {
 }
 
 export const Taskbar = ({ activeWindowId, openWindows, onClick }: {
-  activeWindowId: WindowID | undefined,
+  activeWindowId: WindowID | null,
   openWindows: OpenWindowConfig[],
   onClick: (id: WindowID) => void,
 }) => {
