@@ -9,6 +9,11 @@
   --canvas-text-font-family: "Silkscreen";
 }
 
+body {
+  font-family: var(--ui-font-family), sans-serif;
+  font-size: 16px;
+}
+
 dialog {
   margin: 0;
   padding: 0;
@@ -27,6 +32,7 @@ dialog {
   text-decoration: none;
   font-size: 1em;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .win95-button:active {

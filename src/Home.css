@@ -1,7 +1,5 @@
 .app-container {
   background-color: #008080; /* Classic Windows desktop teal */
-  font-family: var(--ui-font-family), sans-serif;
-  font-size: 16px;
   /* This makes the font sharp and not anti-aliased */
   /* font-smooth: never;
   -webkit-font-smoothing: none; */
@@ -15,16 +13,18 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 5px 0 0;
 
   button {
     width: 72px;
+    padding: 0 1px;
     background: none;
     font-family: inherit;
     border: 1px solid transparent;
     text-align: center;
     display: flex;
     flex-direction: column;
-    row-gap: 7px;
+    gap: 5px;
     align-items: center;
     cursor: pointer;
     overflow: hidden;
@@ -36,6 +36,7 @@
 
   span {
     line-height: 16px;
+    font-size: 12px;
     color: #fff;
     text-overflow: ellipsis;
   }

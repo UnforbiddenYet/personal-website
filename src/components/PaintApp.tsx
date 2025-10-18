@@ -3,6 +3,8 @@ import photo from '../assets/dmytro-pixelated.png'
 import pencil from '../assets/pencil.png'
 import spray from '../assets/spray.png'
 import eraser from '../assets/eraser.png';
+import monaLisa from '../assets/mona-lisa.png';
+import msagent from '../assets/msagent.ico';
 
 import './PaintApp.css';
 
@@ -52,19 +54,19 @@ export function PaintApp() {
           onMouseLeave: paintCanvasProps.finishDrawing, // Stop drawing if mouse leaves canvas
         }}>
           <div className="content-canvas">
-            <h1>HELLO! I'M Dmytro.</h1>
-            <p>I'm awesome human being!</p>
-
+            <div style={{ display: 'flex'}}>
             <div className="pasted-image-container">
-              <img src={photo} alt="A pixelated self portrait of Dmytro." />
+              <img src={monaLisa} alt="Mona Lisa" />
             </div>
 
-            <div>
-              <small>Also, I build amazing apps!</small>
-              <button className="win95-button">
-                View My Work {"->"}
-              </button>
+            {/* <div className="pasted-image-container">
+              <img src={msagent} alt="A man" />
+            </div> */}
             </div>
+
+            <p>I'm awesome</p>
+
+            
           </div>
           <canvas className="paint-canvas" {...{
             ref: paintCanvasProps.ref,

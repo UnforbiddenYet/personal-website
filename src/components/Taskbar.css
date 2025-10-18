@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 32px; /* A typical height for an old-school taskbar */
+  height: 35px; /* A typical height for an old-school taskbar */
   z-index: 1000; /* Ensure it's on top of all other content */
 
   background-color: #c0c0c0; /* The classic Windows gray */
