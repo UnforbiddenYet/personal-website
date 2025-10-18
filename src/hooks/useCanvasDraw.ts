@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 
-type TTool = 'spray' | 'paint' | 'erase'
+export type PaintTool = 'spray' | 'paint' | 'erase'
 
 const usePaintCanvas = (options: {
   color?: string,
@@ -10,7 +10,7 @@ const usePaintCanvas = (options: {
 }) => {
   const { lineWidth = 5 } = options;
 
-  const [tool, setTool] = useState<TTool>('paint');
+  const [tool, setTool] = useState<PaintTool>('paint');
   const [color, setColor] = useState<string>(options.color || '#000000');
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -98,7 +98,7 @@ const usePaintCanvas = (options: {
     startDrawing,
     draw,
     clearCanvas,
-    isToolActive: (t: TTool) => t === tool,
+    isToolActive: (t: PaintTool) => t === tool,
     setTool,
     setColor,
     activeColor: color,

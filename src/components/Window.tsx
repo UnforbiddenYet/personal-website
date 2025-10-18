@@ -19,7 +19,9 @@ type Props = {
     x: number,
     y: number,
     z: number,
-  }
+  },
+  height: number,
+  width: number
 }
 
 export const Window = ({
@@ -27,15 +29,17 @@ export const Window = ({
   controls,
   menu,
   children,
-  position
+  position,
+  width,
+  height
 }: PropsWithChildren<Props>) => {
   return (
-    <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z }}>
+    <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z, width, height }}>
       <header className="title-bar">
         <div className="title-text">{title}</div>
         <div className="window-controls">
           {controls.map((control) => (
-            <button aria-label={control.label} disabled={control.disabled} onClick={control.onClick}>{control.icon}</button>
+            <button key={control.label} aria-label={control.label} disabled={control.disabled} onClick={control.onClick}>{control.icon}</button>
           ))}
         </div>
       </header>
@@ -43,7 +47,7 @@ export const Window = ({
       {menu.length ? <nav className="menu-bar">
         <ul>
           {menu.map(item => (
-            <li onClick={item.onClick}>
+            <li key={item.title} onClick={item.onClick}>
               <button><u>{item.title.charAt(0).toUpperCase()}</u>{item.title.slice(1)}</button></li>
           ))}
         </ul>
