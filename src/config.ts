@@ -16,7 +16,7 @@ const WINDOW_PAINT_CONFIG: WindowConfig = {
 
 const WINDOW_ABOUT_ME_CONFIG: WindowConfig = {
   title: 'About Me',
-  icon: myDocuments,
+  icon: internet,
   id: WindowIDs.about,
   width: 800,
   height: 700,
@@ -40,7 +40,7 @@ const WINDOW_CONTACT_CONFIG: WindowConfig = {
 
 const WINDOW_WEB_STUFF_CONFIG: WindowConfig = {
   title: 'My Favorite Web links',
-  icon: internet,
+  icon: myDocuments,
   id: WindowIDs.webStuff,
   width: 400,
   height: 300,

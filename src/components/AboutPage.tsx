@@ -1,4 +1,5 @@
 import photo from '../assets/dmytro-pixelated.png'
+import tree from '../assets/tree.ico'
 import world from '../assets/world.ico'
 
 import styles from './AboutPage.module.css'
@@ -6,20 +7,28 @@ import styles from './AboutPage.module.css'
 export function AboutPage() {
   return (
     <section className={styles.about}>
-      <div>
+      <center>
+        <img src={tree} width={30} alt="Tree image" />
+        <span> </span>
         <h1>Welcome to DMytro's about page!</h1>
+        <span> </span>
         <img src={world} width={30} alt="World globe image" />
         <br />
         <small>This page was last updated on October 19, 2025. Please check back soon!</small>
-      </div>
+      </center>
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          About
+          ABOUT ME
         </div>
         <div className={styles.sectionContent}>
           <div className={styles.contentRich}>
-            <p>Short description about myself</p>
-
+            <p>Welcome, fellow person!</p>
+            <p>I’m a Software Engineer with over 10 years of experience creating web products that people actually enjoy using. I’ve worked at both small startups and a Y Combinator company that really took off!</p>
+            <p>
+              Most of my journey has been spent in frontend engineering, building major features and improving how real humans use the web.
+            </p>
+            <p>These days, I’m exploring the exciting frontier of cloud-native systems, learning how to make them tough, stable, and built to last.</p>
+            <p>Thanks for visiting my page — don’t forget to bookmark it and come back soon for updates!</p>
           </div>
           <div className={styles.contentImage}>
             <div className="pasted-image-container">
@@ -65,7 +74,7 @@ export function AboutPage() {
       <div>
         <center>
           <button className="win95-button">
-            Contact me 𓂃✍︎
+            Contact me ✉︎
           </button>
           <button className="win95-button">
             Buy me a coffee ⛾
@@ -78,14 +87,14 @@ export function AboutPage() {
         <center><p>You are visitor number 000001 on this page</p></center>
         <div className={styles.badgeList}>
           <div className={styles.badge}>
-            <span>Coded by</span>
+            <span>Coded</span>
             <br />
-            <span>HAND</span>
+            <span>on Mac OS</span>
           </div>
           <div className={styles.badge}>
             <span>Made with</span>
             <br />
-            <span>JavaScript</span>
+            <span>Web tech</span>
           </div>
           <div className={styles.badge}>
             <span>Hosted on</span>
@@ -93,6 +102,8 @@ export function AboutPage() {
             <span>Linux</span>
           </div>
         </div>
+        <br />
+
       </div>
     </section>
   )
