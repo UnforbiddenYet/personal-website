@@ -37,7 +37,7 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title="Dmytro's website - Painttt"
+                title={getWindowConfig(window.id).title}
                 controls={[
                   {
                     icon: '_',

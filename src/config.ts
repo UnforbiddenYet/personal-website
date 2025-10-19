@@ -6,7 +6,7 @@ import paint from './assets/paint.ico';
 import { WindowIDs, type WindowConfig, type WindowID } from './components/types';
 
 const WINDOW_PAINT_CONFIG: WindowConfig = {
-  title: 'Paint',
+  title: 'untitled - Paint',
   icon: paint,
   id: WindowIDs.paint,
   width: 900,
