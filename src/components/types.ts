@@ -4,6 +4,7 @@ export const WindowIDs = {
   blog: 'blog',
   contact: 'contact',
   webStuff: 'webStuff',
+  imageViewer: 'imageViewer',
 } as const
 
 export type WindowID = keyof typeof WindowIDs;

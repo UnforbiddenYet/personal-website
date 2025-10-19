@@ -3,6 +3,7 @@ import myDocuments from './assets/my-documents.ico';
 import phoneDesk from './assets/phone-desk.ico';
 import internet from './assets/the-internet.ico';
 import paint from './assets/paint.ico';
+import kodakImage from './assets/kodak-image.ico';
 import { WindowIDs, type WindowConfig, type WindowID } from './components/types';
 
 const WINDOW_PAINT_CONFIG: WindowConfig = {
@@ -45,12 +46,21 @@ const WINDOW_WEB_STUFF_CONFIG: WindowConfig = {
   height: 300,
 }
 
+const WINDOW_IMAGE_VIEWER_CONFIG: WindowConfig = {
+  title: 'Image viewer',
+  icon: kodakImage,
+  id: WindowIDs.imageViewer,
+  width: 400,
+  height: 254,
+}
+
 export const DESKTOP_SHORTCUTS = [
   WINDOW_PAINT_CONFIG,
   WINDOW_ABOUT_ME_CONFIG,
   WINDOW_WEB_STUFF_CONFIG,
   // WINDOW_BLOG_CONFIG,
   WINDOW_CONTACT_CONFIG,
+  WINDOW_IMAGE_VIEWER_CONFIG,
 ]
 
 export const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
@@ -59,6 +69,7 @@ export const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
   [WindowIDs.blog]: WINDOW_BLOG_CONFIG,
   [WindowIDs.contact]: WINDOW_CONTACT_CONFIG,
   [WindowIDs.webStuff]: WINDOW_WEB_STUFF_CONFIG,
+  [WindowIDs.imageViewer]: WINDOW_IMAGE_VIEWER_CONFIG,
 }
 
 // Type-safe function to get window config

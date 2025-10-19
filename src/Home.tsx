@@ -10,6 +10,8 @@ import { AboutPage } from './components/AboutPage';
 import { useWindowManager } from "./hooks/useWindowManager";
 import { DESKTOP_SHORTCUTS, getWindowConfig } from './config';
 
+import desktopGif from './assets/desktopCleanup.gif'
+
 export function Home() {
   const windowManager = useWindowManager([getWindowConfig(WindowIDs.paint)]);
   const openWindows = windowManager.windows.map(c => getWindowConfig(c.id)).filter(Boolean);
@@ -98,6 +100,28 @@ export function Home() {
                 menu={[]}
               >
                 <AboutPage />
+              </Window>
+            )
+          case WindowIDs.imageViewer:
+            return (
+              <Window
+                key={window.id}
+                position={{ x: window.x, y: window.y, z: window.z, }}
+                width={window.width}
+                height={window.height}
+                title={getWindowConfig(window.id).title}
+                controls={[
+                  {
+                    icon: 'X',
+                    label: 'Close',
+                    onClick: () => {
+                      windowManager.closeWindow(window.id)
+                    }
+                  }
+                ]}
+                menu={[]}
+              >
+                <img src={desktopGif} />
               </Window>
             )
 
