@@ -1,6 +1,7 @@
 .about {
-  overflow: scroll;
-  padding: 10px 5px;
+  overflow: auto;
+  padding: 8px;
+  background: #c0c0c0; /* Classic dialog gray */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -8,44 +9,140 @@
   h1 {
     text-transform: uppercase;
     display: inline-block;
+    font-size: 18px;
+    margin: 0;
   }
 }
 
+/* Multi-panel section container */
 .section {
-  border: 1px solid #000;
+  background: #c0c0c0;
 }
 
+/* Section header - raised tab style */
 .sectionHeader {
-  background: #008000;
-  padding: 4px 7px;
+  background: #c0c0c0;
+  padding: 4px 10px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.5px;
 }
 
+/* Section content - sunken white area */
 .sectionContent {
-  padding: 10px 4px;
+  background: #ffffff;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #dfdfdf;
+  border-bottom: 2px solid #dfdfdf;
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff;
+  padding: 10px;
   display: flex;
+  gap: 10px;
+}
+
+.content {
+  background: #ffffff;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #dfdfdf;
+  border-bottom: 2px solid #dfdfdf;
+  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff;
+  padding: 10px;
 }
 
 .contentRich {
   flex: 1;
+
+  p {
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+  }
 }
 
 .contentImage {
   flex-shrink: 0;
 }
 
-.badgeList {
-  display: flex;
-  gap: 45px;
-  justify-content: center;
+/* Image container - classic black border */
+.imageContainer {
+  background: #ffffff;
+  border: 2px solid #000000;
+  padding: 2px;
+  display: inline-block;
 }
 
+/* Header section styling */
+.header {
+  text-align: center;
+  padding: 10px 0;
+
+  small {
+    color: #808080;
+  }
+}
+
+/* Badge list container */
+.badgeList {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+/* Badges - status bar panel style */
 .badge {
   display: inline-block;
-  min-width: 100px;
-  max-width: 150px;
-  /* height: 50px; */
-  padding: 5px 20px;
-  border: 1px solid #000;
-  background-color: bisque;
+  min-width: 88px;
+  background: #c0c0c0;
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 5px 15px;
   text-align: center;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+/* Visitor counter - LED display style */
+.visitorCounter {
+  display: inline-block;
+  background: #000000;
+  color: #00ff00; /* Green LED style */
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #dfdfdf;
+  border-bottom: 2px solid #dfdfdf;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+.visitorSection {
+  text-align: center;
+  padding: 5px 0;
+}
+
+/* Button container */
+.buttonGroup {
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Footer section */
+.footer {
+  padding: 10px 0;
 }
