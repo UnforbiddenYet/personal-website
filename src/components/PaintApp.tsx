@@ -1,8 +1,11 @@
+import { useRef } from 'react';
 import usePaintCanvas, { type PaintTool } from "../hooks/useCanvasDraw";
 import pencil from '../assets/pencil.png'
 import spray from '../assets/spray.png'
 import eraser from '../assets/eraser.png';
 import monaLisa from '../assets/mona-lisa.png';
+import textIcon from '../assets/text-document.ico';
+import imageIcon from '../assets/jpeg-image.ico';
 
 import './PaintApp.css';
 
@@ -28,10 +31,36 @@ const tools: [PaintTool, string][] = [
   ['paint', pencil],
   ['spray', spray],
   ['erase', eraser],
+  ['text', textIcon],
+  ['image', imageIcon],
 ]
 
 export function PaintApp() {
-  const paintCanvasProps = usePaintCanvas({ color: "#000", lineWidth: 4 });
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const paintCanvasProps = usePaintCanvas({
+    color: "#000",
+    lineWidth: 4,
+    defaultImage: monaLisa,
+    defaultText: "I'm awesome"
+  });
+
+  const handleImageInsert = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      paintCanvasProps.insertImage(file);
+    }
+  };
+
+  const handleToolClick = (tool: PaintTool) => {
+    paintCanvasProps.setTool(tool);
+    if (tool === 'image') {
+      handleImageInsert();
+    }
+  };
 
   return (
     <>
@@ -39,7 +68,12 @@ export function PaintApp() {
         <aside className="toolbar">
           <div className="separator"></div>
           {tools.map(([tool, imgSrc]) => (
-            <div key={tool} className={`tool-icon ${paintCanvasProps.isToolActive(tool) ? 'active' : ''}`} onClick={() => paintCanvasProps.setTool(tool)}>
+            <div
+              key={tool}
+              className={`tool-icon ${paintCanvasProps.isToolActive(tool) ? 'active' : ''}`}
+              onClick={() => handleToolClick(tool)}
+              title={tool === 'text' ? 'Add Text (A)' : tool === 'image' ? 'Insert Image' : tool}
+            >
               <img src={imgSrc} alt={tool} />
             </div>
           ))}
@@ -49,23 +83,8 @@ export function PaintApp() {
           onMouseDown: paintCanvasProps.startDrawing,
           onMouseUp: paintCanvasProps.finishDrawing,
           onMouseMove: paintCanvasProps.draw,
-          onMouseLeave: paintCanvasProps.finishDrawing, // Stop drawing if mouse leaves canvas
+          onMouseLeave: paintCanvasProps.finishDrawing,
         }}>
-          <div className="content-canvas">
-            <div style={{ display: 'flex'}}>
-            <div className="pasted-image-container">
-              <img src={monaLisa} alt="Mona Lisa" />
-            </div>
-
-            {/* <div className="pasted-image-container">
-              <img src={msagent} alt="A man" />
-            </div> */}
-            </div>
-
-            <p>I'm awesome</p>
-
-            
-          </div>
           <canvas className="paint-canvas" {...{
             ref: paintCanvasProps.ref,
           }} />
@@ -82,6 +101,15 @@ export function PaintApp() {
           ))}
         </div>
       </footer>
+
+      {/* Hidden file input for image insertion */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
+      />
     </>
   )
 }
