@@ -4,6 +4,7 @@ import './Window.css'
 
 type Props = {
   title: string,
+  icon?: string,
   controls: {
     label: string,
     icon: string,
@@ -26,6 +27,7 @@ type Props = {
 
 export const Window = ({
   title,
+  icon,
   controls,
   menu,
   children,
@@ -36,7 +38,10 @@ export const Window = ({
   return (
     <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z, width, height }}>
       <header className="title-bar">
-        <div className="title-text">{title}</div>
+        <div className="title-text">
+          {icon && <img src={icon} alt="" className="title-icon" />}
+          {title}
+        </div>
         <div className="window-controls">
           {controls.map((control) => (
             <button key={control.label} aria-label={control.label} disabled={control.disabled} onClick={control.onClick}>{control.icon}</button>

@@ -29,6 +29,18 @@
   font-size: 14px;
 }
 
+.title-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.title-icon {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+}
+
 .window-controls button {
   font-family: "Silkscreen", sans-serif;
   background-color: #c0c0c0;

@@ -40,6 +40,7 @@ export function Home() {
                 width={window.width}
                 height={window.height}
                 title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
                 controls={[
                   {
                     icon: '_',
@@ -88,6 +89,7 @@ export function Home() {
                 width={window.width}
                 height={window.height}
                 title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
                 controls={[
                   {
                     icon: 'X',
@@ -110,6 +112,7 @@ export function Home() {
                 width={window.width}
                 height={window.height}
                 title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
                 controls={[
                   {
                     icon: 'X',
@@ -133,6 +136,7 @@ export function Home() {
                 width={window.width}
                 height={window.height}
                 title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
                 controls={[
                   {
                     icon: 'X',
