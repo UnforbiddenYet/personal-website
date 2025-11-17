@@ -67,18 +67,18 @@ export function Home() {
                 ]}
                 menu={[
                   {
-                    title: 'New',
+                    title: 'File',
                   },
                   {
                     title: 'Edit',
                     disabled: true,
                   },
-                  // {
-                  //   title: 'View',
-                  // },
-                  // {
-                  //   title: 'Help',
-                  // },
+                  {
+                    title: 'View',
+                  },
+                  {
+                    title: 'Help',
+                  },
                 ]}
               >
                 <PaintApp />
