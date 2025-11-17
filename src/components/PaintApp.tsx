@@ -1,10 +1,8 @@
 import usePaintCanvas, { type PaintTool } from "../hooks/useCanvasDraw";
-import photo from '../assets/dmytro-pixelated.png'
 import pencil from '../assets/pencil.png'
 import spray from '../assets/spray.png'
 import eraser from '../assets/eraser.png';
 import monaLisa from '../assets/mona-lisa.png';
-import msagent from '../assets/msagent.ico';
 
 import './PaintApp.css';
 

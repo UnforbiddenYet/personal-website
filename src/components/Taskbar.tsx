@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Taskbar.css';
 import type { WindowID } from './types';
-// import soundIcon from './assets/sound-icon.png'; // We'll create this small icon
 
 type OpenWindowConfig = {
   title: string,

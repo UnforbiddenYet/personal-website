@@ -27,13 +27,11 @@ export function AboutPage() {
         </div>
         <div className={styles.sectionContent}>
           <div className={styles.contentRich}>
-            <p>Welcome, fellow person!</p>
-            <p>I'm a Software Engineer with over 10 years of experience creating web products that people actually enjoy using. I've worked at both small startups and a Y Combinator company that really took off!</p>
-            <p>
-              Most of my journey has been spent in frontend engineering, building major features and improving how real humans use the web.
-            </p>
-            <p>These days, I'm exploring the exciting frontier of cloud-native systems, learning how to make them tough, stable, and built to last.</p>
-            <p>Thanks for visiting my page — don't forget to bookmark it and come back soon for updates!</p>
+            <p>Hi, I'm Dmytro Lubenets. I'm a tinkerer by heart and Software Engineer by profession.</p>
+            <p>I'm passionate about the Internet & web technologies and always on a lookout where they lead us next.</p>
+            <p><strong>My Story:</strong> Born and raised in the 90s in independent Ukraine during extremely tense times for the country. The tough environment shaped me and taught adaptability, creativity and resilience. Eventually in my late 20s I moved to Toronto, Canada where I met amazing people and survived strict 2 year-long Covid-19 lock-down. Fast forward to 2025, I'm currently residing in Paris, France.</p>
+            <p>Over the course of my career I've worked as a Software Engineer for a range of great startups and companies, ranging from tiny hacker groups to scaled-up businesses and influential enterprises.</p>
+            <p>I've learned to make calculated risks and I'm eager to partner up with inspiring people as a <strong>Founding Engineer</strong>.</p>
           </div>
           <div className={styles.contentImage}>
             <div className={styles.imageContainer}>
@@ -45,30 +43,80 @@ export function AboutPage() {
 
       <hr className="separator" />
 
-      {/* Portfolio Section */}
+      {/* How I Work */}
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
-          Portfolio
+          How I Work
         </div>
         <div className={styles.content}>
-          <p><small>Also, I build amazing apps!</small></p>
-          <p>Lorem ipsum Hello there JHDSa kjdhja shdjk ahsjk dhakj sdhkja hsdjk ahsjkd
-            as'd asklnd jalksd
-            as das kldjalks jdlka sjdlk ajksl
-            sdj kaj dlkas
-            as
-            dsadas ddasd asd asd as
-            asdasdsada das da sd as das das d as Hello there JHDSa kjdhja shdjk ahsjk dhakj sdhkja hsdjk ahsjkd
-            as'd asklnd jalksd
-            as das kldjalks jdlka sjdlk ajksl
-            sdj kaj dlkas
-            as
-            dsadas ddasd asd asd as
-            asdasdsada das da sd as das das d as
-          </p>
-          <button className="win95-button">
-            View My Work {"->"}
-          </button>
+          <p>• I like to write plans and specifications before executing the task to make sure I'm set for the goal well prepared</p>
+          <p>• I'm autonomous and continuously improving person and engineer</p>
+          <p>• I have entrepreneurial mindset and think big</p>
+          <p>• I dig deep and do very thorough research</p>
+          <p>• As a creative person, I tend to look for and find uncommon ways to obvious solutions</p>
+          <p>• I believe in close collaboration producing the biggest impact</p>
+        </div>
+      </div>
+
+      <hr className="separator" />
+
+      {/* My Values */}
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          My Values
+        </div>
+        <div className={styles.content}>
+          <p><strong>Honesty, Kindness and Fairness</strong> (3 elements of ethics) are my main motivating drivers in life.</p>
+          <p>I value knowledge and hard process of seeking of it (education) that's why I never stop learning.</p>
+          <p>Empathy goes a long way in building good connections with clients, colleagues and friends.</p>
+        </div>
+      </div>
+
+      <hr className="separator" />
+
+      {/* Tech Stack */}
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          What I Work With
+        </div>
+        <div className={styles.content}>
+          <p>I am well-seasoned web developer and have worked with a range of tech over the years.</p>
+          <p><strong>Current stack:</strong> TypeScript, React.js, Node.js, Claude Code</p>
+          <p>Depending on a task I could pick up on a new technology like WebRTC, Canvas API, WebExtensions API, or even Python or Bash.</p>
+          <p>I'm learning design and deployment of cloud-native DevOps so my most recent additions are <strong>Docker, Kubernetes, Terraform</strong> hosted either on big Google Cloud Platform or self-hosted on Hetzner.</p>
+        </div>
+      </div>
+
+      <hr className="separator" />
+
+      {/* Free Time */}
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          What I Do in Free Time
+        </div>
+        <div className={styles.content}>
+          <p>As a creative person, I enjoy frying my brain in creating or learning something new like writing a novel or photography or beat making.</p>
+          <p>As much tempting staying in warm indoors is, I enjoy spending my time in the nature: mountains, forests and plains.</p>
+          <p>I'm an avid video gamer, enjoy fast action games. I ride mountainbikes, though less aggressively than before (freeride).</p>
+        </div>
+      </div>
+
+      <hr className="separator" />
+
+      {/* Achievements */}
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          Achievements in Life
+        </div>
+        <div className={styles.content}>
+          <p>• I was awarded countless certificates of merit and then a silver medal for "For high academic achievements" upon completion of high school</p>
+          <p>• My first job was a DJ at 19 years old</p>
+          <p>• In my student years I became a Microsoft Student Partner</p>
+          <p>• I have been to 21 countries. I have lived for more than a year in 5 countries, 4 capitals and 9 cities</p>
+          <p>• I co-organized the first grand Angel-Hack startup-event hackathon in Ukraine in Lviv in 2015</p>
+          <p>• I'm self-taught Software Engineer</p>
+          <p>• I have traveled across Georgia with a backpack and a tent in Summer 2015 for 1.5 months</p>
+          <p>• I build north-shore like trails as a teenager in my small town</p>
         </div>
       </div>
 

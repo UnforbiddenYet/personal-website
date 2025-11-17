@@ -14,7 +14,7 @@ const usePaintCanvas = (options: {
   const [color, setColor] = useState<string>(options.color || '#000000');
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const contextRef = useRef<CanvasRenderingContext2D>(null);
+  const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
   // Effect for initializing the canvas context
@@ -28,6 +28,8 @@ const usePaintCanvas = (options: {
     canvas.height = canvas.offsetHeight * dpr;
 
     const context = canvas.getContext('2d');
+    if (!context) return;
+
     context.scale(dpr, dpr);
     context.lineCap = 'round';
     context.fillStyle = '#fff';
@@ -45,7 +47,7 @@ const usePaintCanvas = (options: {
     }
   }, [color, lineWidth, tool]);
 
-  const startDrawing = ({ nativeEvent }) => {
+  const startDrawing = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     const { offsetX, offsetY } = nativeEvent;
     if (contextRef.current) {
       contextRef.current.beginPath();
@@ -61,11 +63,12 @@ const usePaintCanvas = (options: {
     }
   };
 
-  const draw = ({ nativeEvent }) => {
+  const draw = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     if (!isDrawing) return;
 
     const { offsetX, offsetY } = nativeEvent;
     const context = contextRef.current;
+    if (!context) return;
 
     if (tool === 'paint' || tool === 'erase') {
       context.lineTo(offsetX, offsetY);

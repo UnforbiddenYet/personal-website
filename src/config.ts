@@ -18,8 +18,8 @@ const WINDOW_ABOUT_ME_CONFIG: WindowConfig = {
   title: 'About Me',
   icon: internet,
   id: WindowIDs.about,
-  width: 800,
-  height: 700,
+  width: 850,
+  height: 750,
 }
 
 const WINDOW_BLOG_CONFIG: WindowConfig = {
@@ -34,16 +34,16 @@ const WINDOW_CONTACT_CONFIG: WindowConfig = {
   title: 'Contact Me',
   icon: phoneDesk,
   id: WindowIDs.contact,
-  width: 400,
-  height: 300,
+  width: 500,
+  height: 450,
 }
 
 const WINDOW_WEB_STUFF_CONFIG: WindowConfig = {
   title: 'My Favorite Web links',
   icon: myDocuments,
   id: WindowIDs.webStuff,
-  width: 400,
-  height: 300,
+  width: 600,
+  height: 500,
 }
 
 const WINDOW_IMAGE_VIEWER_CONFIG: WindowConfig = {
@@ -63,7 +63,7 @@ export const DESKTOP_SHORTCUTS = [
   WINDOW_IMAGE_VIEWER_CONFIG,
 ]
 
-export const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
+const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
   [WindowIDs.paint]: WINDOW_PAINT_CONFIG,
   [WindowIDs.about]: WINDOW_ABOUT_ME_CONFIG,
   [WindowIDs.blog]: WINDOW_BLOG_CONFIG,

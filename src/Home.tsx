@@ -7,6 +7,9 @@ import { Taskbar } from "./components/Taskbar";
 import { Window } from "./components/Window";
 import { PaintApp } from './components/PaintApp';
 import { AboutPage } from './components/AboutPage';
+import { ContactPage } from './components/ContactPage';
+import { WebLinksPage } from './components/WebLinksPage';
+import { UnderConstruction } from './components/UnderConstruction';
 import { useWindowManager } from "./hooks/useWindowManager";
 import { DESKTOP_SHORTCUTS, getWindowConfig } from './config';
 
@@ -127,6 +130,52 @@ export function Home() {
                 <img src={desktopGif} />
               </Window>
             )
+          case WindowIDs.contact:
+            return (
+              <Window
+                key={window.id}
+                position={{ x: window.x, y: window.y, z: window.z, }}
+                width={window.width}
+                height={window.height}
+                title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
+                controls={[
+                  {
+                    icon: 'X',
+                    label: 'Close',
+                    onClick: () => {
+                      windowManager.closeWindow(window.id)
+                    }
+                  }
+                ]}
+                menu={[]}
+              >
+                <ContactPage />
+              </Window>
+            )
+          case WindowIDs.webStuff:
+            return (
+              <Window
+                key={window.id}
+                position={{ x: window.x, y: window.y, z: window.z, }}
+                width={window.width}
+                height={window.height}
+                title={getWindowConfig(window.id).title}
+                icon={getWindowConfig(window.id).icon}
+                controls={[
+                  {
+                    icon: 'X',
+                    label: 'Close',
+                    onClick: () => {
+                      windowManager.closeWindow(window.id)
+                    }
+                  }
+                ]}
+                menu={[]}
+              >
+                <WebLinksPage />
+              </Window>
+            )
 
           default:
             return (
@@ -147,7 +196,9 @@ export function Home() {
                   }
                 ]}
                 menu={[]}
-              >UNDER CONSTRUCTION</Window>
+              >
+                <UnderConstruction />
+              </Window>
             )
         }
       })}

@@ -1,149 +1,235 @@
-This is a personal portfolio website designed to look like a Windows 95 desktop environment. It's a creative, nostalgic recreation of the classic Windows 95 UI, serving as an interactive personal website for Dmytro Lubenets, a Software Engineer.
+# Dmytro Lubenets - Personal Website 🖥️
 
-## Technologies & Frameworks
+A creative personal portfolio website designed to look like a Windows 95 desktop environment. This nostalgic recreation of the classic Windows 95 UI serves as an interactive showcase for Dmytro Lubenets, a Software Engineer with 10+ years of experience.
 
-Core Stack:
-- React 19.1.1 - Latest React with modern hooks
-- TypeScript 5.9.3 - Full type safety throughout
-- Vite 7.1.7 - Build tool and dev server with HMR (Hot Module Replacement)
-- CSS Modules - For component-scoped styling
+## 🎨 Features
 
-Development Tools:
+- **Authentic Windows 95 UI** - Pixel-perfect recreation with classic gray windows, title bars, and buttons
+- **Interactive Desktop** - Clickable shortcut icons that open draggable, resizable windows
+- **Functional Paint App** - Working MS Paint clone with pencil, spray paint, and eraser tools
+- **Multi-Window Management** - Open multiple windows with proper z-index and focus management
+- **Win95 Scrollbars** - Custom-styled scrollbars matching the Windows 95 aesthetic
+- **Responsive Taskbar** - Live clock and active window tracking
+- **Multiple Pages**:
+  - **About Me** - Professional background, story, values, and achievements
+  - **Contact** - Get in touch via email, LinkedIn, GitHub
+  - **Web Links** - Curated collection of useful resources
+  - **Paint App** - Interactive drawing canvas
+  - **Image Viewer** - Display images in a classic viewer window
+
+## 🛠️ Tech Stack
+
+**Core Technologies:**
+- **React 19.1.1** - Latest React with modern hooks
+- **TypeScript 5.9.3** - Full type safety throughout
+- **Vite 7.1.7** - Lightning-fast build tool and dev server
+- **CSS Modules** - Component-scoped styling
+
+**Development Tools:**
 - ESLint with React plugins for code quality
 - TypeScript ESLint for type-aware linting
 - Strict TypeScript configuration with full type checking
 
-No External UI Libraries - Everything is built from scratch with custom CSS to achieve the Windows 95
-aesthetic.
+**Design Philosophy:**
+- No external UI libraries - Everything built from scratch
+- Authentic Windows 95 color palette (#c0c0c0, #008080, #000080, etc.)
+- MS Sans Serif font for UI authenticity
+- Pixel-perfect borders and shadows
 
-## Main Features & Sections
+## 🚀 Quick Start
 
-The website simulates a Windows 95 desktop with the following applications/windows:
+### Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-Available Desktop Applications:
-1. Paint App (/Users/dmytro/Code/my-site/src/components/PaintApp.tsx)
-  - Working HTML5 canvas drawing tool
-  - Multiple tools: pencil, spray paint, eraser
-  - 16-color classic Windows palette
-  - Custom pixel-art content overlay (Mona Lisa image, text)
-  - Real drawing functionality with different brush modes
-2. About Me (/Users/dmytro/Code/my-site/src/components/AboutPage.tsx)
-  - Professional background (10+ years experience, frontend engineer)
-  - Personal story and portfolio section
-  - Contact buttons (mail, coffee)
-  - Visitor counter (static for now)
-  - Badge/achievement display
-3. Image Viewer
-  - Displays a desktop cleanup GIF
-  - Simple image display window
-4. My Favorite Web Links (placeholder)
-  - Currently shows "UNDER CONSTRUCTION"
-5. Contact Me (placeholder)
-  - Currently shows "UNDER CONSTRUCTION"
-6. Blog (commented out in config)
-  - Not currently available on desktop
+### Installation
 
-Core UI Components:
-- Desktop - Teal background with clickable shortcut icons
-- Taskbar - Bottom taskbar with open window buttons and live clock
-- Window Manager - Draggable, closable windows with cascade positioning
-- Windows 95-style buttons and controls
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd my-site
 
-## Overall Structure & Architecture
+# Install dependencies
+npm install
 
-Key Design Patterns:
+# Start development server
+npm run dev
 
-1. Custom Hooks for State Management:
-  - useWindowManager - Handles window lifecycle, positioning, z-index, focus management
-  - useCanvasDraw - Encapsulates canvas drawing logic with tool selection
-2. Configuration-Driven UI:
-  - /Users/dmytro/Code/my-site/src/config.ts defines all window configurations
-  - Type-safe window IDs using TypeScript const assertions
-  - Centralized window properties (title, icon, dimensions)
-3. Component Composition:
-  - Generic Window component wraps all applications
-  - Props for title bar controls, menu items, positioning
-  - Children rendered as window content
-4. State Management:
-  - Pure React hooks (no Redux/Zustand)
-  - Window state managed centrally in Home component
-  - Each window tracks: id, x, y, z-index, width, height
+# Build for production
+npm run build
 
-## Content & Themes
+# Preview production build
+npm run preview
+```
 
-Theme: Windows 95 Nostalgia
-- Pixel-perfect recreation of Windows 95 UI elements
-- Classic teal desktop background (#008080)
-- Authentic gray windows (#c0c0c0)
-- MS Sans Serif font for UI
-- Silkscreen font for canvas content
-- Vintage icons from actual Windows 95 era
+### Development
+The development server runs on `http://localhost:5173` with hot module replacement (HMR) enabled.
 
-Content Focus:
-- Personal branding for Dmytro Lubenets
-- Software Engineer portfolio
-- Interactive, playful presentation
-- Professional experience (10+ years, frontend focus, Y Combinator background)
-- Current interests: Cloud-native systems, DevOps
-- Personal journey: Ukraine → Toronto → Paris
+## 📦 Project Structure
 
-Personality Elements:
-- Creative, tinkerer mindset
-- Web technology enthusiast
-- Open to Co-Founder Engineer opportunities in DefenseTech, ClimateTech sectors
-- Values: honesty, kindness, fairness
+```
+my-site/
+├── src/
+│   ├── components/         # React components
+│   │   ├── Window.tsx      # Reusable window container
+│   │   ├── Taskbar.tsx     # Bottom taskbar with clock
+│   │   ├── PaintApp.tsx    # MS Paint clone
+│   │   ├── AboutPage.tsx   # About me content
+│   │   ├── ContactPage.tsx # Contact information
+│   │   ├── WebLinksPage.tsx # Web links collection
+│   │   └── UnderConstruction.tsx # Placeholder component
+│   ├── hooks/              # Custom React hooks
+│   │   ├── useWindowManager.ts # Window state management
+│   │   └── useCanvasDraw.ts   # Canvas drawing logic
+│   ├── assets/             # Icons, images, fonts
+│   ├── config.ts           # Window configurations
+│   ├── types.ts            # TypeScript type definitions
+│   ├── Home.tsx            # Main desktop layout
+│   └── App.tsx             # Root component
+├── public/                 # Static assets
+├── netlify.toml           # Netlify deployment config
+└── package.json           # Project dependencies
+```
 
-## Notable Design Patterns & Implementations
+## 🏗️ Architecture
 
-1. Window Management System (/Users/dmytro/Code/my-site/src/hooks/useWindowManager.ts)
+**Key Design Patterns:**
+
+1. **Custom Hooks for State Management**
+   - `useWindowManager` - Window lifecycle, positioning, z-index, focus management
+   - `useCanvasDraw` - Canvas drawing logic with tool selection
+
+2. **Configuration-Driven UI**
+   - `config.ts` defines all window configurations
+   - Type-safe window IDs using TypeScript const assertions
+   - Centralized window properties (title, icon, dimensions)
+
+3. **Component Composition**
+   - Generic `Window` component wraps all applications
+   - Props for title bar controls, menu items, positioning
+   - Children rendered as window content
+
+4. **Pure React State Management**
+   - No Redux/Zustand - just React hooks
+   - Window state managed centrally in Home component
+   - Each window tracks: id, x, y, z-index, width, height
+
+## 🚀 Deployment
+
+This project is configured for easy deployment to multiple platforms:
+
+### Deploy to Netlify
+
+1. **Via Netlify UI:**
+   ```bash
+   # Build the project
+   npm run build
+
+   # Deploy dist folder to Netlify
+   ```
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+   - Configuration file: `netlify.toml` (already included)
+
+2. **Via Netlify CLI:**
+   ```bash
+   npm install -g netlify-cli
+   netlify deploy --prod
+   ```
+
+### Deploy to GitHub Pages
+
+```bash
+# Install gh-pages
+npm install --save-dev gh-pages
+
+# Add to package.json scripts:
+# "deploy": "npm run build && gh-pages -d dist"
+
+# Deploy
+npm run deploy
+```
+
+### Environment Variables
+
+No environment variables required for basic deployment. Update meta tags in `index.html` with your domain name for production.
+
+## 🔧 Customization
+
+### Updating Content
+
+- **About Page:** Edit `/src/components/AboutPage.tsx`
+- **Contact Info:** Edit `/src/components/ContactPage.tsx`
+- **Web Links:** Edit `/src/components/WebLinksPage.tsx`
+- **Window Configurations:** Edit `/src/config.ts`
+
+### Adding New Windows
+
+1. Create a new component in `/src/components/`
+2. Add window configuration to `/src/config.ts`
+3. Add window ID to `/src/components/types.ts`
+4. Add case in `/src/Home.tsx` switch statement
+
+### Styling
+
+- Global styles: `/src/App.css`
+- Component styles: Individual `.module.css` or `.css` files
+- Win95 colors defined in CSS using exact hex codes
+
+## 🎯 Notable Features & Implementation
+
+### Window Management System
 - Sophisticated z-index management using refs to avoid re-renders
 - Cascade window positioning with wrapping after 4 windows
 - Centered window placement calculations
 - Active window tracking
 - Prevents duplicate windows from opening
 
-2. Canvas Drawing Implementation (/Users/dmytro/Code/my-site/src/hooks/useCanvasDraw.ts)
+### Canvas Drawing Implementation
 - High-DPI screen support (device pixel ratio scaling)
 - Multiple drawing tools with different composite operations
 - Spray paint effect using random dot distribution
 - Eraser using 'destination-out' composite mode
 - Proper event handling (mouseDown, mouseMove, mouseUp, mouseLeave)
 
-3. CSS Architecture:
+### Windows 95 Scrollbars
+- Custom-styled scrollbars with authentic Win95 appearance
+- Raised/sunken button states
+- Arrow icons on scroll buttons
+- Proper hover and active states
+
+### CSS Architecture
 - Mix of regular CSS and CSS Modules
 - Nested CSS syntax (modern CSS features)
 - Pixel-perfect Windows 95 styling with inset/outset borders
 - Active state animations simulating button presses
 - Authentic color palette (#c0c0c0, #808080, #000080, etc.)
 
-4. Font Loading:
-- Custom @font-face for MS Sans Serif authentic Windows font
-- Google Fonts for Silkscreen (pixel-style font)
-- CSS variables for font families
+## 📝 License
 
-5. Type Safety:
-- Strict TypeScript throughout
-- Type-safe window IDs using const assertions
-- Proper React props typing with PropsWithChildren
-- No any types
+This is a personal portfolio website. Feel free to use the code as inspiration for your own projects!
 
-6. Performance Optimizations:
-- useCallback for expensive operations (window management)
-- Refs for values that shouldn't trigger re-renders
-- Minimal re-renders in window management
+## 👤 About the Developer
 
-7. Interactive Desktop:
-- Clickable desktop shortcuts that open windows
-- Live taskbar clock updated every second
-- Active window highlighting in taskbar
-- Window focus management on click
+**Dmytro Lubenets** - Software Engineer with 10+ years of experience
 
-## Project Status
+- 🌍 Currently based in Paris, France
+- 💼 Open to Founding Engineer opportunities
+- 🛠️ Specialties: TypeScript, React, Node.js, Cloud-Native DevOps
+- 🎨 Passionate about web technologies and creative coding
 
-In Progress/Planned (from .TODO.md):
-- Setup Wizard on startup
-- Under construction GIF
-- Win95 scrollbars
-- Blog section (currently commented out)
-- Web links section
-- Contact functionality
+### Connect with Me
+
+- 📧 Email: dmytro.lubenets@gmail.com
+- 💼 LinkedIn: [linkedin.com/in/dmytrolubenets](https://www.linkedin.com/in/dmytrolubenets/)
+- 💻 GitHub: [github.com/dmytrolubenets](https://github.com/dmytrolubenets)
+
+## 🙏 Acknowledgments
+
+- Windows 95 for the nostalgic inspiration
+- React and Vite teams for excellent developer tools
+- The web development community for continuous learning
+
+---
+
+**Built with ❤️ and nostalgia for the 90s**
