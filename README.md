@@ -1,73 +1,149 @@
-# React + TypeScript + Vite
+This is a personal portfolio website designed to look like a Windows 95 desktop environment. It's a creative, nostalgic recreation of the classic Windows 95 UI, serving as an interactive personal website for Dmytro Lubenets, a Software Engineer.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies & Frameworks
 
-Currently, two official plugins are available:
+Core Stack:
+- React 19.1.1 - Latest React with modern hooks
+- TypeScript 5.9.3 - Full type safety throughout
+- Vite 7.1.7 - Build tool and dev server with HMR (Hot Module Replacement)
+- CSS Modules - For component-scoped styling
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Development Tools:
+- ESLint with React plugins for code quality
+- TypeScript ESLint for type-aware linting
+- Strict TypeScript configuration with full type checking
 
-## React Compiler
+No External UI Libraries - Everything is built from scratch with custom CSS to achieve the Windows 95
+aesthetic.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Main Features & Sections
 
-## Expanding the ESLint configuration
+The website simulates a Windows 95 desktop with the following applications/windows:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Available Desktop Applications:
+1. Paint App (/Users/dmytro/Code/my-site/src/components/PaintApp.tsx)
+  - Working HTML5 canvas drawing tool
+  - Multiple tools: pencil, spray paint, eraser
+  - 16-color classic Windows palette
+  - Custom pixel-art content overlay (Mona Lisa image, text)
+  - Real drawing functionality with different brush modes
+2. About Me (/Users/dmytro/Code/my-site/src/components/AboutPage.tsx)
+  - Professional background (10+ years experience, frontend engineer)
+  - Personal story and portfolio section
+  - Contact buttons (mail, coffee)
+  - Visitor counter (static for now)
+  - Badge/achievement display
+3. Image Viewer
+  - Displays a desktop cleanup GIF
+  - Simple image display window
+4. My Favorite Web Links (placeholder)
+  - Currently shows "UNDER CONSTRUCTION"
+5. Contact Me (placeholder)
+  - Currently shows "UNDER CONSTRUCTION"
+6. Blog (commented out in config)
+  - Not currently available on desktop
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Core UI Components:
+- Desktop - Teal background with clickable shortcut icons
+- Taskbar - Bottom taskbar with open window buttons and live clock
+- Window Manager - Draggable, closable windows with cascade positioning
+- Windows 95-style buttons and controls
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Overall Structure & Architecture
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Key Design Patterns:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Custom Hooks for State Management:
+  - useWindowManager - Handles window lifecycle, positioning, z-index, focus management
+  - useCanvasDraw - Encapsulates canvas drawing logic with tool selection
+2. Configuration-Driven UI:
+  - /Users/dmytro/Code/my-site/src/config.ts defines all window configurations
+  - Type-safe window IDs using TypeScript const assertions
+  - Centralized window properties (title, icon, dimensions)
+3. Component Composition:
+  - Generic Window component wraps all applications
+  - Props for title bar controls, menu items, positioning
+  - Children rendered as window content
+4. State Management:
+  - Pure React hooks (no Redux/Zustand)
+  - Window state managed centrally in Home component
+  - Each window tracks: id, x, y, z-index, width, height
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Content & Themes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Theme: Windows 95 Nostalgia
+- Pixel-perfect recreation of Windows 95 UI elements
+- Classic teal desktop background (#008080)
+- Authentic gray windows (#c0c0c0)
+- MS Sans Serif font for UI
+- Silkscreen font for canvas content
+- Vintage icons from actual Windows 95 era
+
+Content Focus:
+- Personal branding for Dmytro Lubenets
+- Software Engineer portfolio
+- Interactive, playful presentation
+- Professional experience (10+ years, frontend focus, Y Combinator background)
+- Current interests: Cloud-native systems, DevOps
+- Personal journey: Ukraine → Toronto → Paris
+
+Personality Elements:
+- Creative, tinkerer mindset
+- Web technology enthusiast
+- Open to Co-Founder Engineer opportunities in DefenseTech, ClimateTech sectors
+- Values: honesty, kindness, fairness
+
+## Notable Design Patterns & Implementations
+
+1. Window Management System (/Users/dmytro/Code/my-site/src/hooks/useWindowManager.ts)
+- Sophisticated z-index management using refs to avoid re-renders
+- Cascade window positioning with wrapping after 4 windows
+- Centered window placement calculations
+- Active window tracking
+- Prevents duplicate windows from opening
+
+2. Canvas Drawing Implementation (/Users/dmytro/Code/my-site/src/hooks/useCanvasDraw.ts)
+- High-DPI screen support (device pixel ratio scaling)
+- Multiple drawing tools with different composite operations
+- Spray paint effect using random dot distribution
+- Eraser using 'destination-out' composite mode
+- Proper event handling (mouseDown, mouseMove, mouseUp, mouseLeave)
+
+3. CSS Architecture:
+- Mix of regular CSS and CSS Modules
+- Nested CSS syntax (modern CSS features)
+- Pixel-perfect Windows 95 styling with inset/outset borders
+- Active state animations simulating button presses
+- Authentic color palette (#c0c0c0, #808080, #000080, etc.)
+
+4. Font Loading:
+- Custom @font-face for MS Sans Serif authentic Windows font
+- Google Fonts for Silkscreen (pixel-style font)
+- CSS variables for font families
+
+5. Type Safety:
+- Strict TypeScript throughout
+- Type-safe window IDs using const assertions
+- Proper React props typing with PropsWithChildren
+- No any types
+
+6. Performance Optimizations:
+- useCallback for expensive operations (window management)
+- Refs for values that shouldn't trigger re-renders
+- Minimal re-renders in window management
+
+7. Interactive Desktop:
+- Clickable desktop shortcuts that open windows
+- Live taskbar clock updated every second
+- Active window highlighting in taskbar
+- Window focus management on click
+
+## Project Status
+
+In Progress/Planned (from .TODO.md):
+- Setup Wizard on startup
+- Under construction GIF
+- Win95 scrollbars
+- Blog section (currently commented out)
+- Web links section
+- Contact functionality
