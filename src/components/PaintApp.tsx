@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import usePaintCanvas, { type PaintTool } from "../hooks/useCanvasDraw";
 import pencil from '../assets/tool_pencil.png'
 import spray from '../assets/tool_spray.png'
@@ -36,17 +35,12 @@ const tools: [PaintTool, string][] = [
 ]
 
 export function PaintApp() {
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const paintCanvasProps = usePaintCanvas({
     color: "#000",
     lineWidth: 4,
     defaultImage: monaLisa,
     defaultText: "I'm awesome"
   });
-
-  const handleImageInsert = () => {
-    fileInputRef.current?.click();
-  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -57,9 +51,6 @@ export function PaintApp() {
 
   const handleToolClick = (tool: PaintTool) => {
     paintCanvasProps.setTool(tool);
-    if (tool === 'image') {
-      handleImageInsert();
-    }
   };
 
   return (
@@ -104,7 +95,7 @@ export function PaintApp() {
 
       {/* Hidden file input for image insertion */}
       <input
-        ref={fileInputRef}
+        ref={paintCanvasProps.fileInputRef}
         type="file"
         accept="image/*"
         style={{ display: 'none' }}

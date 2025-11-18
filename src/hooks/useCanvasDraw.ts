@@ -16,11 +16,13 @@ const usePaintCanvas = (options: {
   const [color, setColor] = useState<string>(options.color || '#000000');
   const [textInput, setTextInput] = useState<string>('');
   const [fontSize, setFontSize] = useState<number>(24);
+  const [pendingImagePosition, setPendingImagePosition] = useState<{ x: number; y: number } | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   // Effect for initializing the canvas context
   useEffect(() => {
@@ -110,8 +112,9 @@ const usePaintCanvas = (options: {
 
     // Handle image tool
     if (tool === 'image') {
-      // For now, we'll trigger file input
-      // This will be connected to UI later
+      // Store the click position and trigger file input
+      setPendingImagePosition({ x: offsetX, y: offsetY });
+      fileInputRef.current?.click();
       return;
     }
 
@@ -185,15 +188,23 @@ const usePaintCanvas = (options: {
           height *= ratio;
         }
 
-        // Draw at center of canvas
-        const x = (canvasRef.current!.offsetWidth - width) / 2;
-        const y = (canvasRef.current!.offsetHeight - height) / 2;
+        // Use pending position if available, otherwise center
+        let x, y;
+        if (pendingImagePosition) {
+          x = pendingImagePosition.x;
+          y = pendingImagePosition.y;
+          setPendingImagePosition(null); // Clear after use
+        } else {
+          x = (canvasRef.current!.offsetWidth - width) / 2;
+          y = (canvasRef.current!.offsetHeight - height) / 2;
+        }
+
         context.drawImage(img, x, y, width, height);
       };
       img.src = e.target?.result as string;
     };
     reader.readAsDataURL(imageFile);
-  }, []);
+  }, [pendingImagePosition]);
 
   const addText = useCallback((text: string, x: number, y: number) => {
     const context = contextRef.current;
@@ -208,6 +219,7 @@ const usePaintCanvas = (options: {
 
   return {
     ref: canvasRef,
+    fileInputRef,
     finishDrawing,
     startDrawing,
     draw,
