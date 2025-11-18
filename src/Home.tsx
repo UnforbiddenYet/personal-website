@@ -11,7 +11,7 @@ import { ContactPage } from './components/ContactPage';
 import { WebLinksPage } from './components/WebLinksPage';
 import { UnderConstruction } from './components/UnderConstruction';
 import { useWindowManager } from "./hooks/useWindowManager";
-import { DESKTOP_SHORTCUTS, getWindowConfig } from './config';
+import { DESKTOP_SHORTCUTS, getWindowConfig } from './windowConfig';
 
 import desktopGif from './assets/desktopCleanup.gif'
 
