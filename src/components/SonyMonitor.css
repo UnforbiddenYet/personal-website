@@ -1,3 +1,11 @@
+:root {
+  /* Barrel distortion intensity per edge (0-1 range) */
+  --barrel-left: 0;
+  --barrel-right: 0;
+  --barrel-top: 0;
+  --barrel-bottom: 1;
+}
+
 .sony-monitor-wrapper {
   width: 100vw;
   height: 100vh;
@@ -39,7 +47,7 @@
   height: 61.18%; /* 780px / 1275px */
   background: #000000;
   overflow: hidden;
-  filter: blur(0.3px); /* Slight CRT phosphor glow */
+  filter: url(#barrel-distortion) blur(0.3px); /* Barrel distortion + CRT phosphor glow */
 }
 
 .screen-content > * {
@@ -150,7 +158,7 @@
   }
 
   .screen-content {
-    filter: blur(0.2px);
+    filter: url(#barrel-distortion) blur(0.2px);
   }
 }
 
@@ -164,6 +172,6 @@
   }
 
   .screen-content {
-    filter: none;
+    filter: url(#barrel-distortion); /* Barrel only on mobile, no blur for performance */
   }
 }
