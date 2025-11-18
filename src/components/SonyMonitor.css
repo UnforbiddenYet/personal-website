@@ -1,0 +1,169 @@
+.sony-monitor-wrapper {
+  width: 100vw;
+  height: 100vh;
+  /* background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.monitor-container {
+  position: relative;
+  /* width: 100%;
+  max-width: 1200px; */
+  height: 100vh;
+  aspect-ratio: 1420 / 1275;
+  filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.7));
+}
+
+/* Content layer - behind the monitor bezel */
+.content-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: #000000; */
+  z-index: 1;
+}
+
+/* Screen content - sized and positioned to align with transparent area in monitor image */
+/* Based on exact pixel measurements: screen area is 1088x780px at position 165px,155px in 1420x1275px image */
+.screen-content {
+  position: absolute;
+  top: 12.16%; /* 155px / 1275px */
+  left: 11.62%; /* 165px / 1420px */
+  width: 76.62%; /* 1088px / 1420px */
+  height: 61.18%; /* 780px / 1275px */
+  background: #000000;
+  overflow: hidden;
+  filter: blur(0.3px); /* Slight CRT phosphor glow */
+}
+
+.screen-content > * {
+  width: 100%;
+  height: 100%;
+}
+
+/* Monitor bezel overlay - on top with transparent screen area */
+.monitor-bezel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+}
+
+/* CRT Scanlines */
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.12) 0px,
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  animation: scanline-flicker 8s linear infinite;
+  opacity: 0.6;
+}
+
+/* Vignette Effect */
+.crt-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.25) 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Screen glare/reflection */
+.screen-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at top left,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 6;
+  filter: blur(30px);
+  mix-blend-mode: screen;
+}
+
+/* Animations */
+@keyframes scanline-flicker {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1400px) {
+  .monitor-container {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .monitor-container {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .monitor-container {
+    max-width: 800px;
+  }
+
+  .sony-monitor-wrapper {
+    padding: 10px;
+  }
+
+  .screen-content {
+    filter: blur(0.2px);
+  }
+}
+
+@media (max-width: 768px) {
+  .monitor-container {
+    max-width: 95vw;
+  }
+
+  .crt-scanlines {
+    opacity: 0.4;
+  }
+
+  .screen-content {
+    filter: none;
+  }
+}
