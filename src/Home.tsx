@@ -10,10 +10,9 @@ import { AboutPage } from './components/AboutPage';
 import { ContactPage } from './components/ContactPage';
 import { WebLinksPage } from './components/WebLinksPage';
 import { UnderConstruction } from './components/UnderConstruction';
+import { ImageViewer } from './components/ImageViewer';
 import { useWindowManager } from "./hooks/useWindowManager";
 import { DESKTOP_SHORTCUTS, getWindowConfig } from './windowConfig';
-
-import desktopGif from './assets/desktopCleanup.gif'
 
 export function Home() {
   const windowManager = useWindowManager([getWindowConfig(WindowIDs.paint)]);
@@ -22,14 +21,12 @@ export function Home() {
   return (
     <div className="desktop">
       <div className="desktop-shortcuts">
-        {DESKTOP_SHORTCUTS.map(config => (
-          <button key={config.id} onClick={() => windowManager.openWindow({
-            id: config.id,
-            width: config.width,
-            height: config.height
-          })}>
-            <img src={config.icon} width={40} />
-            <span>{config.title}</span>
+        {DESKTOP_SHORTCUTS.map(windowConfig => (
+          <button key={windowConfig.id} onClick={() => {
+            windowManager.openWindow(windowConfig);
+          }}>
+            <img src={windowConfig.icon} width={40} />
+            <span>{windowConfig.title}</span>
           </button>
         ))}
       </div>
@@ -127,7 +124,7 @@ export function Home() {
                 ]}
                 menu={[]}
               >
-                <img src={desktopGif} />
+                <ImageViewer imageUrl={window.data?.imageUrl} />
               </Window>
             )
           case WindowIDs.contact:

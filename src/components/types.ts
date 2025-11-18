@@ -9,10 +9,11 @@ export const WindowIDs = {
 
 export type WindowID = keyof typeof WindowIDs;
 
-export interface WindowConfig {
+export interface WindowConfig<TData = any> {
   title: string;
   icon: string;
   id: WindowID;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
+  data?: TData
 }

@@ -6,6 +6,7 @@ type NewWindowConfig = {
   width?: number,
   height?: number,
   cascade?: boolean,
+  data?: Record<string, any>,
 }
 
 type WindowState = {
@@ -15,6 +16,7 @@ type WindowState = {
   z: number,
   width: number,
   height: number,
+  data?: Record<string, any>,
 }
 
 export const useWindowManager = (initialWindowsConfig: NewWindowConfig[] = []) => {
@@ -34,6 +36,7 @@ export const useWindowManager = (initialWindowsConfig: NewWindowConfig[] = []) =
         x: (window.innerWidth / 2) - (width / 2) + offset,
         y: (window.innerHeight / 2) - (height / 2) + offset,
         z: index,
+        data: config.data,
       };
     });
   });
@@ -88,6 +91,7 @@ export const useWindowManager = (initialWindowsConfig: NewWindowConfig[] = []) =
         x: newX,
         y: newY,
         z: highestZIndexRef.current,
+        data: config.data,
       };
       if (config.cascade !== false) {
         windowIdCounterRef.current++;

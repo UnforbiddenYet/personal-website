@@ -1,4 +1,4 @@
-import jpegImage from './assets/jpeg-image.ico';
+import textDocument from './assets/text-document.ico';
 import myDocuments from './assets/my-documents.ico';
 import phoneDesk from './assets/phone-desk.ico';
 import internet from './assets/the-internet.ico';
@@ -23,8 +23,8 @@ const WINDOW_ABOUT_ME_CONFIG: WindowConfig = {
 }
 
 const WINDOW_BLOG_CONFIG: WindowConfig = {
-  title: 'Blog - My Writings',
-  icon: jpegImage,
+  title: 'My Writing',
+  icon: textDocument,
   id: WindowIDs.blog,
   width: 600,
   height: 500,
@@ -50,17 +50,24 @@ const WINDOW_IMAGE_VIEWER_CONFIG: WindowConfig = {
   title: 'Image viewer',
   icon: kodakImage,
   id: WindowIDs.imageViewer,
-  width: 400,
-  height: 254,
+  // width: 400,
+  // height: 254,
+}
+
+const MTV_IMAGE_WINDOW_CONFIG: WindowConfig = {
+  ...WINDOW_IMAGE_VIEWER_CONFIG,
+  data: {
+    imageUrl: 'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDI2MHkxbGltZnBlanpkNjUzYjVmb3h1dXY3bTJic2ZmY3ZwMjEwMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/K4ppHUZTYKJYk/giphy.gif',
+  }
 }
 
 export const DESKTOP_SHORTCUTS = [
   WINDOW_PAINT_CONFIG,
   WINDOW_ABOUT_ME_CONFIG,
   WINDOW_WEB_STUFF_CONFIG,
-  // WINDOW_BLOG_CONFIG,
   WINDOW_CONTACT_CONFIG,
-  WINDOW_IMAGE_VIEWER_CONFIG,
+  MTV_IMAGE_WINDOW_CONFIG,
+  WINDOW_BLOG_CONFIG,
 ]
 
 const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
