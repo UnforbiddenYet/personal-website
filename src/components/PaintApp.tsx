@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 import usePaintCanvas, { type PaintTool } from "../hooks/useCanvasDraw";
-import pencil from '../assets/pencil.png'
-import spray from '../assets/spray.png'
-import eraser from '../assets/eraser.png';
+import pencil from '../assets/tool_pencil.png'
+import spray from '../assets/tool_spray.png'
+import eraser from '../assets/tool_eraser.png';
+import image from '../assets/tool_image.png';
+import text from '../assets/tool_text.png';
 import monaLisa from '../assets/mona-lisa.png';
-import textIcon from '../assets/text-document.ico';
-import imageIcon from '../assets/jpeg-image.ico';
 
 import './PaintApp.css';
 
@@ -31,8 +31,8 @@ const tools: [PaintTool, string][] = [
   ['paint', pencil],
   ['spray', spray],
   ['erase', eraser],
-  ['text', textIcon],
-  ['image', imageIcon],
+  ['text', text],
+  ['image', image],
 ]
 
 export function PaintApp() {
