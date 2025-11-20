@@ -1,4 +1,5 @@
 import internetIcon from '../assets/the-internet.ico'
+import tipIcon from '../assets/tip.ico'
 import styles from './WebLinksPage.module.css'
 
 export function WebLinksPage() {
@@ -63,7 +64,7 @@ export function WebLinksPage() {
       <hr className="separator" />
 
       <div className={styles.footer}>
-        <p><small>💡 Links open in a new window</small></p>
+        <p><small><img src={tipIcon} width={12} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} /> Links open in a new window</small></p>
       </div>
     </div>
   )

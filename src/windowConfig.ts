@@ -4,6 +4,7 @@ import phoneDesk from './assets/phone-desk.ico';
 import internet from './assets/the-internet.ico';
 import paint from './assets/paint.ico';
 import kodakImage from './assets/kodak-image.ico';
+import tree from './assets/tree.ico';
 import { WindowIDs, type WindowConfig, type WindowID } from './components/types';
 
 const WINDOW_PAINT_CONFIG: WindowConfig = {
@@ -61,6 +62,14 @@ const MTV_IMAGE_WINDOW_CONFIG: WindowConfig = {
   }
 }
 
+const WINDOW_FILE_EXPLORER_CONFIG: WindowConfig = {
+  title: 'File Explorer',
+  icon: tree,
+  id: WindowIDs.fileExplorer,
+  width: 800,
+  height: 600,
+}
+
 export const DESKTOP_SHORTCUTS = [
   WINDOW_PAINT_CONFIG,
   WINDOW_ABOUT_ME_CONFIG,
@@ -68,6 +77,7 @@ export const DESKTOP_SHORTCUTS = [
   WINDOW_CONTACT_CONFIG,
   MTV_IMAGE_WINDOW_CONFIG,
   WINDOW_BLOG_CONFIG,
+  WINDOW_FILE_EXPLORER_CONFIG,
 ]
 
 const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
@@ -77,6 +87,7 @@ const WINDOW_CONFIGS_BY_ID: Record<WindowID, WindowConfig> = {
   [WindowIDs.contact]: WINDOW_CONTACT_CONFIG,
   [WindowIDs.webStuff]: WINDOW_WEB_STUFF_CONFIG,
   [WindowIDs.imageViewer]: WINDOW_IMAGE_VIEWER_CONFIG,
+  [WindowIDs.fileExplorer]: WINDOW_FILE_EXPLORER_CONFIG,
 }
 
 // Type-safe function to get window config

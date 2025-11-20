@@ -1,6 +1,8 @@
 import photo from '../assets/dmytro-pixelated.png'
 import tree from '../assets/tree.ico'
 import world from '../assets/world.ico'
+import envelopeIcon from '../assets/envelope_closed.ico'
+import coffeeIcon from '../assets/utopia_smiley.ico'
 
 import styles from './AboutPage.module.css'
 
@@ -117,10 +119,12 @@ export function AboutPage() {
       {/* Contact Buttons */}
       <div className={styles.buttonGroup}>
         <button className="win95-button">
-          ✉ Contact me
+          <img src={envelopeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          Contact me
         </button>
         <button className="win95-button">
-          ☕ Buy me a coffee
+          <img src={coffeeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          Buy me a coffee
         </button>
       </div>
 

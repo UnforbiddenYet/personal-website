@@ -5,6 +5,7 @@ export const WindowIDs = {
   contact: 'contact',
   webStuff: 'webStuff',
   imageViewer: 'imageViewer',
+  fileExplorer: 'fileExplorer',
 } as const
 
 export type WindowID = keyof typeof WindowIDs;

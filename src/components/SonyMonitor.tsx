@@ -22,7 +22,6 @@ function generateBarrelDisplacementMap(): string {
   const barrelBottom = parseFloat(computedStyle.getPropertyValue('--barrel-bottom') || '0.12');
 
   const center = size / 2;
-  const maxDist = Math.sqrt(2) * center; // Maximum distance from center to corner
 
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {

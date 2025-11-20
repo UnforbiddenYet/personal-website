@@ -1,4 +1,9 @@
 import phoneIcon from '../assets/phone-desk.ico'
+import envelopeIcon from '../assets/envelope_closed.ico'
+import linkIcon from '../assets/url1.ico'
+import computerIcon from '../assets/computer.ico'
+import coffeeIcon from '../assets/utopia_smiley.ico'
+import worldIcon from '../assets/world.ico'
 import styles from './ContactPage.module.css'
 
 export function ContactPage() {
@@ -25,13 +30,16 @@ export function ContactPage() {
 
       <div className={styles.buttonGroup}>
         <a href="mailto:dmytro.lubenets@gmail.com" className="win95-button" target="_blank" rel="noopener noreferrer">
-          ✉ Email Me
+          <img src={envelopeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          Email Me
         </a>
         <a href="https://www.linkedin.com/in/dmytrolubenets/" className="win95-button" target="_blank" rel="noopener noreferrer">
-          🔗 LinkedIn
+          <img src={linkIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          LinkedIn
         </a>
         <a href="https://github.com/dmytrolubenets" className="win95-button" target="_blank" rel="noopener noreferrer">
-          💻 GitHub
+          <img src={computerIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+          GitHub
         </a>
       </div>
 
@@ -45,7 +53,8 @@ export function ContactPage() {
           <p>If you enjoy my work and want to support me, consider buying me a coffee!</p>
           <div className={styles.buttonGroup}>
             <a href="https://www.buymeacoffee.com/dmytrolubenets" className="win95-button" target="_blank" rel="noopener noreferrer">
-              ☕ Buy Me a Coffee
+              <img src={coffeeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+              Buy Me a Coffee
             </a>
           </div>
         </div>
@@ -54,8 +63,8 @@ export function ContactPage() {
       <hr className="separator" />
 
       <div className={styles.footer}>
-        <p><small>Currently based in Paris, France 🇫🇷</small></p>
-        <p><small>Open to remote opportunities worldwide 🌍</small></p>
+        <p><small>Currently based in Paris, France</small></p>
+        <p><small>Open to remote opportunities worldwide <img src={worldIcon} width={12} alt="" style={{ verticalAlign: 'middle' }} /></small></p>
       </div>
     </div>
   )
