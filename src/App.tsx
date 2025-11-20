@@ -1,11 +1,14 @@
 import './App.css'
 import { Home } from './Home';
+import { WindowManagerProvider } from './contexts';
 
 function App() {
   return (
-    <div className="app-container">
-      <Home />
-    </div>
+    <WindowManagerProvider>
+      <div className="app-container">
+        <Home />
+      </div>
+    </WindowManagerProvider>
   )
 }
 

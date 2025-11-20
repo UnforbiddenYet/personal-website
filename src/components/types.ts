@@ -10,7 +10,7 @@ export const WindowIDs = {
 
 export type WindowID = keyof typeof WindowIDs;
 
-export interface WindowConfig<TData = any> {
+export interface WindowConfig<TData = unknown> {
   title: string;
   icon: string;
   id: WindowID;
@@ -18,3 +18,21 @@ export interface WindowConfig<TData = any> {
   height?: number;
   data?: TData
 }
+
+export type GenericWindowConfig = WindowConfig
+
+export type ImageViewerWindowConfig = WindowConfig<{
+  imageUrl: string,
+}>
+
+export type NewWindowType<T = unknown> = WindowConfig<T> & {
+  cascade?: boolean;
+};
+
+export type WindowState<T = unknown> = WindowConfig<T> & {
+  width: number;
+  height: number;
+  x: number;
+  y: number;
+  z: number;
+};

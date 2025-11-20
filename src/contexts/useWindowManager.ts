@@ -1,48 +1,29 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { type WindowID } from '../components/types';
+import type { WindowID, NewWindowType, WindowState } from '../components/types';
 
-type NewWindowConfig = {
-  id: WindowID,
-  width?: number,
-  height?: number,
-  cascade?: boolean,
-  data?: Record<string, any>,
-}
+export const useWindowManager = (initialWindows: NewWindowType<any>[] = []) => {
+  const highestZIndexRef = useRef(initialWindows.length - 1);
+  const windowIdCounterRef = useRef(initialWindows.length);
 
-type WindowState = {
-  id: WindowID,
-  x: number,
-  y: number,
-  z: number,
-  width: number,
-  height: number,
-  data?: Record<string, any>,
-}
-
-export const useWindowManager = (initialWindowsConfig: NewWindowConfig[] = []) => {
-  const highestZIndexRef = useRef(initialWindowsConfig.length - 1);
-  const windowIdCounterRef = useRef(initialWindowsConfig.length);
-
-  const [windows, setWindows] = useState<WindowState[]>(() => {
+  const [windows, setWindows] = useState<WindowState<any>[]>(() => {
     const cascadeOffset = 25;
-    return initialWindowsConfig.map((config, index) => {
-      const width = config.width || 500;
-      const height = config.height || 350;
-      const offset = config.cascade === false ? 0 : index * cascadeOffset;
+    return initialWindows.map((payload, index) => {
+      const width = payload.width || 500;
+      const height = payload.height || 350;
+      const offset = payload.cascade === false ? 0 : index * cascadeOffset;
       return {
-        id: config.id,
+        ...payload,
         width,
         height,
         x: (window.innerWidth / 2) - (width / 2) + offset,
         y: (window.innerHeight / 2) - (height / 2) + offset,
         z: index,
-        data: config.data,
       };
     });
   });
 
   const [activeWindowId, setActiveWindowId] = useState<WindowID | null>(
-    () => initialWindowsConfig[initialWindowsConfig.length - 1]?.id ?? null
+    () => initialWindows[initialWindows.length - 1]?.id ?? null
   );
 
   useEffect(() => {
@@ -66,34 +47,33 @@ export const useWindowManager = (initialWindowsConfig: NewWindowConfig[] = []) =
     });
   }, []);
 
-  const openWindow = useCallback((config: NewWindowConfig) => {
-    const windowExists = windows.find(w => w.id === config.id);
+  const openWindow = useCallback(<T = unknown>(payload: NewWindowType<T>) => {
+    const windowExists = windows.find(w => w.id === payload.id);
 
     if (windowExists) {
-      bringToFront(config.id);
+      bringToFront(payload.id);
     } else {
       highestZIndexRef.current += 1;
-      const windowWidth = config.width || 500;
-      const windowHeight = config.height || 350;
+      const windowWidth = payload.width || 500;
+      const windowHeight = payload.height || 350;
 
       const windowCounter = windowIdCounterRef.current;
       const cascadeOffset = 25;
       const wrapAfter = 4;
-      const offset = config.cascade === false ? 0 : (windowCounter % wrapAfter) * cascadeOffset;
+      const offset = payload.cascade === false ? 0 : (windowCounter % wrapAfter) * cascadeOffset;
 
       const newX = (window.innerWidth / 2) - (windowWidth / 2) + offset;
       const newY = (window.innerHeight / 2) - (windowHeight / 2) + offset;
 
-      const newWindow: WindowState = {
-        id: config.id,
+      const newWindow: WindowState<T> = {
+        ...payload,
         width: windowWidth,
         height: windowHeight,
         x: newX,
         y: newY,
         z: highestZIndexRef.current,
-        data: config.data,
       };
-      if (config.cascade !== false) {
+      if (payload.cascade !== false) {
         windowIdCounterRef.current++;
       }
       setWindows(prev => [...prev, newWindow]);

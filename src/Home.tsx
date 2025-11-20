@@ -11,13 +11,12 @@ import { ContactPage } from './components/ContactPage';
 import { WebLinksPage } from './components/WebLinksPage';
 import { UnderConstruction } from './components/UnderConstruction';
 import { ImageViewer } from './components/ImageViewer';
-import { FileExplorerDemo } from './components/FileExplorerDemo';
-import { useWindowManager } from "./hooks/useWindowManager";
-import { DESKTOP_SHORTCUTS, getWindowConfig } from './windowConfig';
+import { useWindowManagerContext } from "./contexts/WindowManagerContext";
+import { DESKTOP_SHORTCUTS } from './windowConfig';
 
 export function Home() {
-  const windowManager = useWindowManager([getWindowConfig(WindowIDs.paint)]);
-  const openWindows = windowManager.windows.map(c => getWindowConfig(c.id)).filter(Boolean);
+  const windowManager = useWindowManagerContext();
+  const openWindows = windowManager.windows.filter(Boolean);
 
   return (
     <div className="desktop">
@@ -40,8 +39,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: '_',
@@ -89,8 +88,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: 'X',
@@ -112,8 +111,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: 'X',
@@ -135,8 +134,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: 'X',
@@ -158,8 +157,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: 'X',
@@ -175,30 +174,6 @@ export function Home() {
               </Window>
             )
 
-          case WindowIDs.fileExplorer:
-            return (
-              <Window
-                key={window.id}
-                position={{ x: window.x, y: window.y, z: window.z, }}
-                width={window.width}
-                height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
-                controls={[
-                  {
-                    icon: 'X',
-                    label: 'Close',
-                    onClick: () => {
-                      windowManager.closeWindow(window.id)
-                    }
-                  }
-                ]}
-                menu={[]}
-              >
-                <FileExplorerDemo />
-              </Window>
-            )
-
           default:
             return (
               <Window
@@ -206,8 +181,8 @@ export function Home() {
                 position={{ x: window.x, y: window.y, z: window.z, }}
                 width={window.width}
                 height={window.height}
-                title={getWindowConfig(window.id).title}
-                icon={getWindowConfig(window.id).icon}
+                title={window.title}
+                icon={window.icon}
                 controls={[
                   {
                     icon: 'X',

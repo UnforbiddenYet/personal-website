@@ -8,7 +8,6 @@ import imageIcon from '../assets/kodak-image.ico';
 import audioIcon from '../assets/loudspeaker_rays.ico';
 import videoIcon from '../assets/video_mk.ico';
 import executableIcon from '../assets/settings_gear.ico';
-
 export interface FileItem {
   id: string;
   name: string;
@@ -17,46 +16,51 @@ export interface FileItem {
   children?: FileItem[];
   size?: number; // in bytes
   metadata?: {
-    [key: string]: any;
+    [key: string]: unknown;
   };
 }
 
-export interface FileExplorerProps {
-  items: FileItem[];
+type ExtractNodes<T> = T extends (infer Item)[]
+  ? Item | (Item extends { children: infer Children } ? ExtractNodes<Children> : never)
+  : never;
+export interface FileExplorerProps<T extends FileItem[]> {
+  items: T;
+  onFileItemOpen?: (item: ExtractNodes<T>) => void;
   onNavigate?: (path: string[]) => void;
   showToolbar?: boolean;
   showStatusBar?: boolean;
 }
 
-export function FileExplorer({
+export const FileExplorer = <T extends FileItem[]>({
   items,
   onNavigate,
+  onFileItemOpen,
   showToolbar = true,
   showStatusBar = true,
-}: FileExplorerProps) {
+}: FileExplorerProps<T>) => {
   const [currentPath, setCurrentPath] = useState<string[]>([]);
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
-  const viewMode = 'icons'; // Only icons view is currently implemented
 
   // Navigate through folder hierarchy
-  const getCurrentItems = (): FileItem[] => {
-    let current = items;
+  const getCurrentItems = (): ExtractNodes<T>[] => {
+    let current = items as unknown as ExtractNodes<T>[];
     for (const pathPart of currentPath) {
       const folder = current.find(item => item.name === pathPart && item.type === 'folder');
       if (folder?.children) {
-        current = folder.children;
+        current = folder.children as ExtractNodes<T>[];
       }
     }
     return current;
   };
 
-  const handleItemDoubleClick = (item: FileItem) => {
+  const handleItemDoubleClick = (item: ExtractNodes<T>) => {
     if (item.type === 'folder') {
       const newPath = [...currentPath, item.name];
       setCurrentPath(newPath);
       setSelectedItems(new Set());
       onNavigate?.(newPath);
     }
+    onFileItemOpen?.(item);
   };
 
   const handleItemClick = (item: FileItem, isCtrlClick: boolean = false) => {
@@ -154,27 +158,21 @@ export function FileExplorer({
       )}
 
       <div className="explorer-content">
-        {viewMode === 'icons' ? (
-          <div className="explorer-icons-view">
-            {currentItems.map(item => (
-              <div
-                key={item.id}
-                className={`explorer-item ${selectedItems.has(item.id) ? 'selected' : ''}`}
-                onClick={(e) => handleItemClick(item, e.ctrlKey || e.metaKey)}
-                onDoubleClick={() => handleItemDoubleClick(item)}
-              >
-                <div className="explorer-item-icon">
-                  <img src={getDefaultIcon(item)} width={32} alt="" />
-                </div>
-                <div className="explorer-item-name">{item.name}</div>
+        <div className="explorer-icons-view">
+          {currentItems.map(item => (
+            <div
+              key={item.id}
+              className={`explorer-item ${selectedItems.has(item.id) ? 'selected' : ''}`}
+              onClick={(e) => handleItemClick(item, e.ctrlKey || e.metaKey)}
+              onDoubleClick={() => handleItemDoubleClick(item)}
+            >
+              <div className="explorer-item-icon">
+                <img src={getDefaultIcon(item)} width={32} alt="" />
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="explorer-list-view">
-            {/* List view implementation */}
-          </div>
-        )}
+              <div className="explorer-item-name">{item.name}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {showStatusBar && (

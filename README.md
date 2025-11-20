@@ -1,6 +1,6 @@
 # Dmytro Lubenets - Personal Website 🖥️
 
-A creative personal portfolio website designed to look like a Windows 95 desktop environment. This nostalgic recreation of the classic Windows 95 UI serves as an interactive showcase for Dmytro Lubenets, a Software Engineer with 10+ years of experience.
+A creative personal portfolio website designed to look like a Windows 95-98 desktop environment. This nostalgic recreation of the classic Windows 95-98 UI serves as an interactive showcase for Dmytro Lubenets, a Software Engineer with 10+ years of experience.
 
 ## 🎨 Features
 
