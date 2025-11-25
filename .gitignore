@@ -107,3 +107,6 @@ yarn-error.log
 .netlify
 windows98-icons
 
+.env
+.env.production
+
