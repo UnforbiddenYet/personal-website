@@ -8,9 +8,8 @@ const usePaintCanvas = (options: {
   color?: string,
   lineWidth?: number,
   defaultImage?: string,
-  defaultText?: string
 }) => {
-  const { lineWidth = 5, defaultImage, defaultText } = options;
+  const { lineWidth = 5, defaultImage } = options;
 
   const [tool, setTool] = useState<PaintTool>('paint');
   const [color, setColor] = useState<string>(options.color || '#000000');
@@ -62,25 +61,13 @@ const usePaintCanvas = (options: {
 
         context.drawImage(img, 10, 10, width, height);
 
-        // Draw default text after image loads
-        if (defaultText) {
-          context.font = '24px "Silkscreen", monospace';
-          context.fillStyle = '#000000';
-          context.fillText(defaultText, 10, 20 + height);
-        }
-
         setIsInitialized(true);
       };
       img.src = defaultImage;
-    } else if (defaultText) {
-      context.font = '24px "Silkscreen", monospace';
-      context.fillStyle = '#000000';
-      context.fillText(defaultText, 10, 30);
-      setIsInitialized(true);
     } else {
       setIsInitialized(true);
     }
-  }, [defaultImage, defaultText, isInitialized]);
+  }, [defaultImage, isInitialized]);
 
   // Effect for updating drawing settings when they change
   useEffect(() => {

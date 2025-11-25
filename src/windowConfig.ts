@@ -8,7 +8,7 @@ import tree from './assets/tree.ico';
 import { WindowIDs, type GenericWindowConfig, type ImageViewerWindowConfig, type WindowID } from './components/types';
 
 const WINDOW_PAINT_CONFIG = {
-  title: 'untitled - Paint',
+  title: 'Masterpiece - Paint',
   icon: paint,
   id: WindowIDs.paint,
   width: 768,
@@ -36,11 +36,11 @@ const WINDOW_CONTACT_CONFIG = {
   icon: phoneDesk,
   id: WindowIDs.contact,
   width: 500,
-  height: 450,
+  height: 600,
 } satisfies GenericWindowConfig
 
 const WINDOW_WEB_STUFF_CONFIG = {
-  title: 'My Favorite Web links',
+  title: 'Collection (in progress)',
   icon: myDocuments,
   id: WindowIDs.webStuff,
   width: 600,
@@ -75,9 +75,7 @@ export const DESKTOP_SHORTCUTS = [
   WINDOW_ABOUT_ME_CONFIG,
   WINDOW_WEB_STUFF_CONFIG,
   WINDOW_CONTACT_CONFIG,
-  MTV_IMAGE_WINDOW_CONFIG,
   WINDOW_BLOG_CONFIG,
-  WINDOW_FILE_EXPLORER_CONFIG,
 ]
 
 export const getImageViewerBaseConfig = () => WINDOW_IMAGE_VIEWER_CONFIG

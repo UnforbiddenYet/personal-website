@@ -43,7 +43,7 @@ export function ContactPage() {
         </a>
       </div>
 
-      <hr className="separator" />
+      {/* <hr className="separator" />
 
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
@@ -58,7 +58,7 @@ export function ContactPage() {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <hr className="separator" />
 
