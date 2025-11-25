@@ -60,9 +60,29 @@
   gap: 6px;
 }
 
+.tray-icon-button {
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+}
+
+.tray-icon-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tray-icon-button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .tray-icon {
   width: 16px;
   height: 16px;
+  image-rendering: pixelated;
 }
 
 .taskbar-clock {

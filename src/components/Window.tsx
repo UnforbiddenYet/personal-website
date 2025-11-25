@@ -9,6 +9,7 @@ type Props = {
     label: string,
     icon: string,
     disabled?: boolean,
+    cursor?: string,
     onClick?: () => void,
   }[],
   menu: {
@@ -44,7 +45,7 @@ export const Window = ({
         </div>
         <div className="window-controls">
           {controls.map((control) => (
-            <button key={control.label} aria-label={control.label} disabled={control.disabled} onClick={control.onClick}>{control.icon}</button>
+            <button key={control.label} aria-label={control.label} disabled={control.disabled} onClick={control.onClick} style={{ ...(control.cursor ? { cursor: control.cursor } : {}) }}>{control.icon}</button>
           ))}
         </div>
       </header>

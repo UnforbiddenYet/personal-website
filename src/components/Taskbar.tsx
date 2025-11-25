@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Taskbar.css';
 import type { WindowID } from './types';
+import questionIcon from '../assets/help_question_mark.ico';
 
 type OpenWindowConfig = {
   title: string,
@@ -8,10 +9,11 @@ type OpenWindowConfig = {
   id: WindowID
 }
 
-export const Taskbar = ({ activeWindowId, openWindows, onClick }: {
+export const Taskbar = ({ activeWindowId, openWindows, onClick, onInfoClick }: {
   activeWindowId: WindowID | null,
   openWindows: OpenWindowConfig[],
   onClick: (id: WindowID) => void,
+  onInfoClick?: () => void,
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -41,7 +43,11 @@ export const Taskbar = ({ activeWindowId, openWindows, onClick }: {
       </div>
 
       <div className="taskbar-tray">
-        {/* <img src={soundIcon} alt="Sound" className="tray-icon" /> */}
+        {onInfoClick && (
+          <button className="tray-icon-button" onClick={onInfoClick} title="About this site">
+            <img src={questionIcon} alt="Info" className="tray-icon" />
+          </button>
+        )}
         <div className="taskbar-clock">{formattedTime}</div>
       </div>
     </div>

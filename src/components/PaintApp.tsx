@@ -39,7 +39,6 @@ export function PaintApp() {
     color: "#000",
     lineWidth: 4,
     defaultImage: monaLisa,
-    defaultText: "I'm awesome"
   });
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

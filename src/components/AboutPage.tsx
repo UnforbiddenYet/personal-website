@@ -92,7 +92,7 @@ export function AboutPage() {
         </div>
         <div className={styles.content}>
           <p>My first real job was DJing at 19. Terrible pay, amazing experience.</p>
-          <p>I've lived in 5 countries and speak -4̶- 3 languages.</p>
+          <p>I've lived in 5 countries and speak -4̶- 3 languages and I've been learning 7 languages overall.</p>
           <p>In 2015, I backpacked across Georgia for a month and a half with just a tent. Slept in forests, on beaches, met strangers who became friends.</p>
         </div>
       </div>

@@ -1,5 +1,6 @@
 
 import './Home.css'
+import { useState } from 'react';
 
 import { WindowIDs } from "./components/types";
 
@@ -13,10 +14,12 @@ import { UnderConstruction } from './components/UnderConstruction';
 import { ImageViewer } from './components/ImageViewer';
 import { useWindowManagerContext } from "./contexts/WindowManagerContext";
 import { DESKTOP_SHORTCUTS } from './windowConfig';
+import { TaskbarInfo } from './components/TaskbarInfo';
 
 export function Home() {
   const windowManager = useWindowManagerContext();
   const openWindows = windowManager.windows.filter(Boolean);
+  const [showInfo, setShowInfo] = useState(false);
 
   return (
     <div className="desktop">
@@ -57,6 +60,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -94,6 +98,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -117,6 +122,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -140,6 +146,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -163,6 +170,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -187,6 +195,7 @@ export function Home() {
                   {
                     icon: 'X',
                     label: 'Close',
+                    cursor: 'pointer',
                     onClick: () => {
                       windowManager.closeWindow(window.id)
                     }
@@ -200,7 +209,16 @@ export function Home() {
         }
       })}
 
-      <Taskbar openWindows={openWindows} activeWindowId={windowManager.activeWindowId} onClick={windowManager.bringToFront} />
+      {showInfo && (
+        <TaskbarInfo onClose={() => setShowInfo(false)} />
+      )}
+
+      <Taskbar
+        openWindows={openWindows}
+        activeWindowId={windowManager.activeWindowId}
+        onClick={windowManager.bringToFront}
+        onInfoClick={() => setShowInfo(true)}
+      />
     </div>
   )
 }

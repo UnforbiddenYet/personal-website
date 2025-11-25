@@ -21,6 +21,7 @@ export function Alert95({
         {
           icon: 'X',
           label: 'Close',
+          cursor: 'pointer',
           onClick: onClose
         }
       ] : []}
