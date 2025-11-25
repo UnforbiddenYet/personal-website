@@ -7,7 +7,6 @@ export function NoMobile() {
     <Alert95
       title="Desktop Needed"
       icon={warningIcon}
-      buttonText="OK"
     >
       <p className={styles.contentText}>
         This website is designed for desktop computers only.
