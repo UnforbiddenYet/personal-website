@@ -58,10 +58,9 @@ export const Window = ({
         </ul>
       </nav> : null}
 
-      {/* <div className="window-body">
-          
-        </div> */}
-      {children}
+      <div className="window-body">
+        {children}
+      </div>
     </div>
   )
 }
