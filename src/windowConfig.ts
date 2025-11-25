@@ -11,7 +11,7 @@ const WINDOW_PAINT_CONFIG = {
   title: 'untitled - Paint',
   icon: paint,
   id: WindowIDs.paint,
-  width: 900,
+  width: 768,
   height: 600,
 } satisfies GenericWindowConfig;
 
@@ -19,7 +19,7 @@ const WINDOW_ABOUT_ME_CONFIG = {
   title: 'About Me',
   icon: internet,
   id: WindowIDs.about,
-  width: 850,
+  width: 768,
   height: 750,
 } satisfies GenericWindowConfig
 
@@ -66,7 +66,7 @@ const WINDOW_FILE_EXPLORER_CONFIG = {
   title: 'File Explorer',
   icon: tree,
   id: WindowIDs.fileExplorer,
-  width: 800,
+  width: 768,
   height: 600,
 } satisfies GenericWindowConfig
 
