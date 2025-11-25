@@ -1,6 +1,8 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import type { WindowID, NewWindowType, WindowState } from '../components/types';
 
+const TOOLBAR_HEIGHT = 35;
+
 export const useWindowManager = (initialWindows: NewWindowType<any>[] = []) => {
   const highestZIndexRef = useRef(initialWindows.length - 1);
   const windowIdCounterRef = useRef(initialWindows.length);
@@ -9,14 +11,15 @@ export const useWindowManager = (initialWindows: NewWindowType<any>[] = []) => {
     const cascadeOffset = 25;
     return initialWindows.map((payload, index) => {
       const width = payload.width || 500;
-      const height = payload.height || 350;
+      const maxHeight = window.innerHeight - TOOLBAR_HEIGHT;
+      const height = Math.min(maxHeight, payload.height || 350);
       const offset = payload.cascade === false ? 0 : index * cascadeOffset;
       return {
         ...payload,
         width,
         height,
         x: (window.innerWidth / 2) - (width / 2) + offset,
-        y: (window.innerHeight / 2) - (height / 2) + offset,
+        y: (maxHeight / 2) - (height / 2) + offset,
         z: index,
       };
     });
@@ -54,8 +57,10 @@ export const useWindowManager = (initialWindows: NewWindowType<any>[] = []) => {
       bringToFront(payload.id);
     } else {
       highestZIndexRef.current += 1;
+
       const windowWidth = payload.width || 500;
-      const windowHeight = payload.height || 350;
+      const maxHeight = window.innerHeight - TOOLBAR_HEIGHT;
+      const windowHeight = Math.min(maxHeight, payload.height || 350);
 
       const windowCounter = windowIdCounterRef.current;
       const cascadeOffset = 25;
@@ -63,7 +68,7 @@ export const useWindowManager = (initialWindows: NewWindowType<any>[] = []) => {
       const offset = payload.cascade === false ? 0 : (windowCounter % wrapAfter) * cascadeOffset;
 
       const newX = (window.innerWidth / 2) - (windowWidth / 2) + offset;
-      const newY = (window.innerHeight / 2) - (windowHeight / 2) + offset;
+      const newY = (maxHeight / 2) - (windowHeight / 2) + offset;
 
       const newWindow: WindowState<T> = {
         ...payload,
