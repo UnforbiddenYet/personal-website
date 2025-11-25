@@ -7,6 +7,10 @@ import coffeeIcon from '../assets/utopia_smiley.ico'
 import styles from './AboutPage.module.css'
 
 export function AboutPage() {
+  function handleContactMeClick() {
+    alert('Please reach me at dmytro . lubenets at gmail . com')
+  }
+
   return (
     <section className={styles.about}>
       {/* Header Section */}
@@ -17,7 +21,7 @@ export function AboutPage() {
         {' '}
         <img src={world} width={24} alt="World globe icon" />
         <br />
-        <small>This page was last updated on October 19, 2025. Please check back soon!</small>
+        <small>This page was last updated on November 25, 2025. Please check back soon!</small>
       </div>
 
       <hr className="separator" />
@@ -88,7 +92,7 @@ export function AboutPage() {
         </div>
         <div className={styles.content}>
           <p>My first real job was DJing at 19. Terrible pay, amazing experience.</p>
-          <p>I've lived in 5 countries.</p>
+          <p>I've lived in 5 countries and speak -4̶- 3 languages.</p>
           <p>In 2015, I backpacked across Georgia for a month and a half with just a tent. Slept in forests, on beaches, met strangers who became friends.</p>
         </div>
       </div>
@@ -97,11 +101,11 @@ export function AboutPage() {
 
       {/* Contact Buttons */}
       <div className={styles.buttonGroup}>
-        <button className="win95-button">
+        <button className="win95-button" onClick={handleContactMeClick}>
           <img src={envelopeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
           Contact me
         </button>
-        <button className="win95-button">
+        <button className="win95-button" onClick={() => { alert("I'm joking. Please donate to https://savelife.in.ua/en/") }}>
           <img src={coffeeIcon} width={16} alt="" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
           Buy me a coffee
         </button>
