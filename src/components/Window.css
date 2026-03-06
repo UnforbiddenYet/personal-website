@@ -47,6 +47,11 @@
   image-rendering: pixelated;
 }
 
+.window-controls {
+  display: flex;
+  align-items: center;
+}
+
 .window-controls button {
   font-family: "Silkscreen", sans-serif;
   background-color: #c0c0c0;
@@ -58,6 +63,11 @@
   height: 20px;
   margin-left: 2px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
 
   &:active:not(:disabled) {
     border-top: 1px solid #000000;
