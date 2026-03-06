@@ -23,7 +23,8 @@ type Props = {
     z: number,
   },
   height: number,
-  width: number
+  width: number,
+  onTitleBarMouseDown?: () => void,
 }
 
 export const Window = ({
@@ -34,11 +35,12 @@ export const Window = ({
   children,
   position,
   width,
-  height
+  height,
+  onTitleBarMouseDown,
 }: PropsWithChildren<Props>) => {
   return (
     <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z, width, height }}>
-      <header className="title-bar">
+      <header className="title-bar" onMouseDown={onTitleBarMouseDown}>
         <div className="title-text">
           {icon && <img src={icon} alt="" className="title-icon" />}
           {title}
