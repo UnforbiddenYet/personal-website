@@ -11,7 +11,7 @@
 .explorer-toolbar {
   display: flex;
   align-items: center;
-  padding: 2px;
+  padding: 2px 0;
   background-color: #c0c0c0;
   border-bottom: 1px solid #808080;
   gap: 4px;
@@ -49,7 +49,13 @@
 .toolbar-separator {
   width: 1px;
   height: 20px;
-  background: linear-gradient(to right, #808080 0%, #808080 50%, #ffffff 50%, #ffffff 100%);
+  background: linear-gradient(
+    to right,
+    #808080 0%,
+    #808080 50%,
+    #ffffff 50%,
+    #ffffff 100%
+  );
   margin: 0 2px;
 }
 
