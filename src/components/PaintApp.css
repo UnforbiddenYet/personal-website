@@ -4,6 +4,10 @@
   min-height: 0; /* Fix for flexbox overflow */
 }
 
+.paint-body .separator {
+  margin: 0;
+}
+
 .toolbar {
   width: 60px;
   flex-shrink: 0;
