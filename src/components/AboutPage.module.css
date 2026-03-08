@@ -1,7 +1,9 @@
 .about {
   overflow: auto;
   padding: var(--space-3);
+
   @mixin win95-surface;
+
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -20,13 +22,14 @@
 }
 
 /* Section header - raised tab style */
-.sectionHeader {
+.section-header {
   @mixin win95-section-header;
 }
 
 /* Section content - sunken white area */
-.sectionContent {
+.section-content {
   @mixin win95-content-panel;
+
   display: flex;
   gap: var(--space-4);
 }
@@ -35,7 +38,7 @@
   @mixin win95-content-panel;
 }
 
-.contentRich {
+.content-rich {
   flex: 1;
 
   p {
@@ -44,12 +47,12 @@
   }
 }
 
-.contentImage {
+.content-image {
   flex-shrink: 0;
 }
 
 /* Image container - classic black border */
-.imageContainer {
+.image-container {
   background: var(--win95-white);
   border: 2px solid var(--win95-black);
   padding: 2px;
@@ -67,7 +70,7 @@
 }
 
 /* Badge list container */
-.badgeList {
+.badge-list {
   display: flex;
   gap: var(--space-6);
   justify-content: center;
@@ -79,8 +82,10 @@
 .badge {
   display: inline-block;
   min-width: 88px;
+
   @mixin win95-surface;
   @mixin win95-sunken-soft 1px;
+
   padding: 5px 15px;
   text-align: center;
   font-size: var(--font-size-xs);
@@ -88,7 +93,7 @@
 }
 
 /* Visitor counter - LED display style */
-.visitorCounter {
+.visitor-counter {
   display: inline-block;
   background: var(--win95-black);
   color: var(--win95-led-green);
@@ -103,13 +108,13 @@
   font-size: var(--font-size-base);
 }
 
-.visitorSection {
+.visitor-section {
   text-align: center;
   padding: 5px 0;
 }
 
 /* Button container */
-.buttonGroup {
+.button-group {
   text-align: center;
   padding: var(--space-4) 0;
   display: flex;

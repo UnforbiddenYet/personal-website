@@ -1,7 +1,9 @@
 .contact {
   overflow: auto;
   padding: var(--space-3);
+
   @mixin win95-surface;
+
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -27,7 +29,7 @@
   @mixin win95-surface;
 }
 
-.sectionHeader {
+.section-header {
   @mixin win95-section-header;
 }
 
@@ -40,7 +42,7 @@
   }
 }
 
-.buttonGroup {
+.button-group {
   display: flex;
   gap: var(--space-3);
   justify-content: center;

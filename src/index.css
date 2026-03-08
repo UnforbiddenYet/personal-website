@@ -12,8 +12,8 @@
   --win95-gray: #c0c0c0;
   --win95-dark-gray: #808080;
   --win95-light-gray: #dfdfdf;
-  --win95-white: #ffffff;
-  --win95-black: #000000;
+  --win95-white: #fff;
+  --win95-black: #000;
   --win95-navy: #000080;
   --win95-teal: #008080;
   --win95-highlight: #1084d0;
@@ -25,9 +25,9 @@
   --win95-panel-bg: #f0f0f0;
   --win95-error-bg: #fee;
   --win95-muted-text: #666;
-  --win95-led-green: #00ff00;
-  --win95-tray-hover: rgba(255, 255, 255, 0.3);
-  --win95-tray-active: rgba(0, 0, 0, 0.1);
+  --win95-led-green: #0f0;
+  --win95-tray-hover: rgb(255 255 255 / 30%);
+  --win95-tray-active: rgb(0 0 0 / 10%);
 
   /* Spacing scale */
   --space-1: 2px;
@@ -54,17 +54,13 @@ body {
   background: var(--win95-teal);
   margin: 0;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
-}
-
-/* Windows 95 Scrollbars */
-* {
   scrollbar-width: auto;
   scrollbar-color: var(--win95-gray) var(--win95-light-gray);
 }
@@ -89,6 +85,7 @@ body {
 
 *::-webkit-scrollbar-thumb:active {
   background-color: var(--win95-pressed-bg);
+
   @mixin win95-sunken;
 }
 
@@ -100,6 +97,7 @@ body {
 *::-webkit-scrollbar-button {
   @mixin win95-surface;
   @mixin win95-raised;
+
   width: 16px;
   height: 16px;
 }
@@ -148,6 +146,7 @@ body {
 .win95-button {
   @mixin win95-surface;
   @mixin win95-raised;
+
   display: inline-block;
   padding: 4px;
   color: var(--win95-black);

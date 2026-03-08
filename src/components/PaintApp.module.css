@@ -17,10 +17,13 @@
   align-items: center;
   gap: var(--space-3);
 }
+
 .tool-icon {
   width: 40px;
   height: 40px;
+
   @mixin win95-toolbar-button;
+
   display: grid;
   place-content: center;
   font-size: var(--font-size-xl);
@@ -38,7 +41,9 @@
 
 .canvas {
   flex-grow: 1;
+
   @mixin win95-sunken-soft;
+
   position: relative;
 }
 
@@ -65,7 +70,9 @@
   height: 40px;
   width: 40px;
   padding: 9px;
+
   @mixin win95-sunken-soft;
+
   background-color: var(--win95-active-bg);
 }
 
@@ -73,8 +80,7 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  column-gap: var(--space-2);
-  row-gap: 1px;
+  gap: 1px var(--space-2);
 }
 
 .color-swatch {

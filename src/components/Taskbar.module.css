@@ -7,8 +7,8 @@
   z-index: 1000;
 
   @mixin win95-surface;
-  border-top: 2px solid var(--win95-white);
 
+  border-top: 2px solid var(--win95-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -25,7 +25,9 @@
 .taskbar-window-button {
   height: 26px;
   padding: 0 var(--space-4) 0 5px;
+
   @mixin win95-toolbar-button;
+
   white-space: nowrap;
   font-size: var(--font-size-base);
   font-family: inherit;
@@ -76,6 +78,7 @@
   height: 26px;
   min-width: 75px;
   padding: 0 var(--space-3);
+
   @mixin win95-sunken-soft;
 
   display: flex;

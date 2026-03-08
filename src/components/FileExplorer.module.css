@@ -4,6 +4,7 @@
   height: 100%;
   font-family: var(--ui-font-family), sans-serif;
   font-size: var(--font-size-xs);
+
   @mixin win95-surface;
 }
 
@@ -12,7 +13,9 @@
   display: flex;
   align-items: center;
   padding: 2px 0;
+
   @mixin win95-surface;
+
   border-bottom: 1px solid var(--win95-dark-gray);
   gap: var(--space-2);
 }
@@ -20,8 +23,10 @@
 .toolbar-button {
   width: 24px;
   height: 22px;
+
   @mixin win95-surface;
   @mixin win95-raised 1px;
+
   cursor: pointer;
   font-size: var(--font-size-base);
   display: flex;
@@ -32,6 +37,7 @@
 
 .toolbar-button:active:not(:disabled) {
   @mixin win95-sunken 1px;
+
   padding: 1px 0 0 1px;
 }
 
@@ -68,7 +74,9 @@
 .address-path {
   flex: 1;
   background-color: var(--win95-white);
+
   @mixin win95-sunken-soft 1px;
+
   padding: 2px var(--space-2);
   font-size: var(--font-size-xs);
   overflow: hidden;
@@ -126,7 +134,7 @@
 .explorer-item-name {
   font-size: var(--font-size-xs);
   text-align: center;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   max-width: 100%;
   line-height: var(--line-height-tight);
   padding: 2px;
@@ -137,7 +145,9 @@
   display: flex;
   align-items: center;
   padding: 2px var(--space-2);
+
   @mixin win95-surface;
+
   border-top: 1px solid var(--win95-white);
   min-height: 20px;
 }
@@ -147,7 +157,9 @@
   font-size: var(--font-size-xs);
   color: var(--win95-black);
   padding: 0 var(--space-2);
+
   @mixin win95-sunken-soft 1px;
   @mixin win95-surface;
+
   line-height: 16px;
 }
