@@ -1,0 +1,41 @@
+/* Win95 border pattern mixins — used via postcss-mixins */
+
+@define-mixin win95-raised $size: 2px {
+  border-top: $size solid var(--win95-white);
+  border-left: $size solid var(--win95-white);
+  border-right: $size solid var(--win95-black);
+  border-bottom: $size solid var(--win95-black);
+}
+
+@define-mixin win95-raised-soft $size: 2px {
+  border-top: $size solid var(--win95-white);
+  border-left: $size solid var(--win95-white);
+  border-right: $size solid var(--win95-dark-gray);
+  border-bottom: $size solid var(--win95-dark-gray);
+}
+
+@define-mixin win95-sunken $size: 2px {
+  border-top: $size solid var(--win95-black);
+  border-left: $size solid var(--win95-black);
+  border-right: $size solid var(--win95-white);
+  border-bottom: $size solid var(--win95-white);
+}
+
+@define-mixin win95-sunken-soft $size: 2px {
+  border-top: $size solid var(--win95-dark-gray);
+  border-left: $size solid var(--win95-dark-gray);
+  border-right: $size solid var(--win95-white);
+  border-bottom: $size solid var(--win95-white);
+}
+
+@define-mixin win95-sunken-content {
+  border-top: 2px solid var(--win95-dark-gray);
+  border-left: 2px solid var(--win95-dark-gray);
+  border-right: 2px solid var(--win95-light-gray);
+  border-bottom: 2px solid var(--win95-light-gray);
+  box-shadow: inset 1px 1px 0 var(--win95-black), inset -1px -1px 0 var(--win95-white);
+}
+
+@define-mixin win95-surface {
+  background-color: var(--win95-gray);
+}
