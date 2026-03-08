@@ -1,6 +1,6 @@
 .about {
   overflow: auto;
-  padding: 8px;
+  padding: var(--space-3);
   @mixin win95-surface;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   h1 {
     text-transform: uppercase;
     display: inline-block;
-    font-size: 18px;
+    font-size: var(--font-size-lg);
     margin: 0;
   }
 }
@@ -21,36 +21,26 @@
 
 /* Section header - raised tab style */
 .sectionHeader {
-  @mixin win95-surface;
-  padding: 4px 10px;
-  @mixin win95-raised-soft;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  @mixin win95-section-header;
 }
 
 /* Section content - sunken white area */
 .sectionContent {
-  background: var(--win95-white);
-  @mixin win95-sunken-content;
-  padding: 10px;
+  @mixin win95-content-panel;
   display: flex;
-  gap: 10px;
+  gap: var(--space-4);
 }
 
 .content {
-  background: var(--win95-white);
-  @mixin win95-sunken-content;
-  padding: 10px;
+  @mixin win95-content-panel;
 }
 
 .contentRich {
   flex: 1;
 
   p {
-    margin: 0 0 10px 0;
-    line-height: 1.4;
+    margin: 0 0 var(--space-4) 0;
+    line-height: var(--line-height-normal);
   }
 }
 
@@ -69,7 +59,7 @@
 /* Header section styling */
 .header {
   text-align: center;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 
   small {
     color: var(--win95-dark-gray);
@@ -79,10 +69,10 @@
 /* Badge list container */
 .badgeList {
   display: flex;
-  gap: 20px;
+  gap: var(--space-6);
   justify-content: center;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 }
 
 /* Badges - status bar panel style */
@@ -93,7 +83,7 @@
   @mixin win95-sunken-soft 1px;
   padding: 5px 15px;
   text-align: center;
-  font-size: 11px;
+  font-size: var(--font-size-xs);
   line-height: 1.3;
 }
 
@@ -101,16 +91,16 @@
 .visitorCounter {
   display: inline-block;
   background: var(--win95-black);
-  color: #00ff00;
+  color: var(--win95-led-green);
   font-family: 'Courier New', monospace;
   font-weight: bold;
-  padding: 4px 12px;
+  padding: var(--space-2) 12px;
   border-top: 2px solid var(--win95-dark-gray);
   border-left: 2px solid var(--win95-dark-gray);
   border-right: 2px solid var(--win95-light-gray);
   border-bottom: 2px solid var(--win95-light-gray);
   letter-spacing: 3px;
-  font-size: 14px;
+  font-size: var(--font-size-base);
 }
 
 .visitorSection {
@@ -121,14 +111,14 @@
 /* Button container */
 .buttonGroup {
   text-align: center;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
   display: flex;
-  gap: 8px;
+  gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* Footer section */
 .footer {
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 }

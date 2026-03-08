@@ -1,6 +1,6 @@
 .content {
   @mixin win95-surface;
-  padding: 16px 12px;
+  padding: var(--space-5) 12px;
   display: flex;
   gap: 12px;
   align-items: flex-start;

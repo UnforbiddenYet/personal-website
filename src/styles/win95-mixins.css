@@ -39,3 +39,35 @@
 @define-mixin win95-surface {
   background-color: var(--win95-gray);
 }
+
+@define-mixin win95-toolbar-button {
+  @mixin win95-surface;
+  @mixin win95-raised-soft;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+@define-mixin win95-toolbar-button-active {
+  @mixin win95-sunken-soft;
+  background-color: var(--win95-active-bg);
+  box-shadow: inset 0px 0px 0px 1px var(--win95-gray);
+}
+
+@define-mixin win95-section-header {
+  @mixin win95-surface;
+  padding: var(--space-2) var(--space-4);
+  @mixin win95-raised-soft;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.5px;
+}
+
+@define-mixin win95-content-panel {
+  background: var(--win95-white);
+  @mixin win95-sunken-content;
+  padding: var(--space-4);
+}
