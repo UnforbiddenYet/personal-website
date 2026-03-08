@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './ImageViewer.css';
+import styles from './ImageViewer.module.css';
 
 interface ImageViewerProps {
   imageUrl?: string;
@@ -10,7 +10,7 @@ export function ImageViewer({ imageUrl }: ImageViewerProps) {
 
   if (!imageUrl) {
     return (
-      <div className="image-viewer-empty">
+      <div className={styles.imageViewerEmpty}>
         <p>No image URL provided</p>
       </div>
     );
@@ -18,15 +18,15 @@ export function ImageViewer({ imageUrl }: ImageViewerProps) {
 
   if (error) {
     return (
-      <div className="image-viewer-error">
+      <div className={styles.imageViewerError}>
         <p>Failed to load image</p>
-        <p className="image-url">{imageUrl}</p>
+        <p className={styles.imageUrl}>{imageUrl}</p>
       </div>
     );
   }
 
   return (
-    <div className="image-viewer">
+    <div className={styles.imageViewer}>
       <img
         src={imageUrl}
         alt="Viewed image"

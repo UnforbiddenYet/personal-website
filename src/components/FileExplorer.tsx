@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './FileExplorer.css';
+import styles from './FileExplorer.module.css';
 
 // Import Windows 98 icons
 import folderIcon from '../assets/directory_closed.ico';
@@ -136,48 +136,48 @@ export const FileExplorer = <T extends FileItem[]>({
   };
 
   return (
-    <div className="win95-explorer">
+    <div className={styles.win95Explorer}>
       {showToolbar && (
-        <div className="explorer-toolbar">
+        <div className={styles.explorerToolbar}>
           <button
-            className="toolbar-button"
+            className={styles.toolbarButton}
             onClick={goBack}
             disabled={currentPath.length === 0}
             title="Up"
           >
             ↑
           </button>
-          <div className="toolbar-separator"></div>
-          <div className="address-bar">
-            <span className="address-label">Address:</span>
-            <div className="address-path">
+          <div className={styles.toolbarSeparator}></div>
+          <div className={styles.addressBar}>
+            <span className={styles.addressLabel}>Address:</span>
+            <div className={styles.addressPath}>
               C:\{currentPath.join('\\')}
             </div>
           </div>
         </div>
       )}
 
-      <div className="explorer-content">
-        <div className="explorer-icons-view">
+      <div className={styles.explorerContent}>
+        <div className={styles.explorerIconsView}>
           {currentItems.map(item => (
             <div
               key={item.id}
-              className={`explorer-item ${selectedItems.has(item.id) ? 'selected' : ''}`}
+              className={`${styles.explorerItem} ${selectedItems.has(item.id) ? styles.selected : ''}`}
               onClick={(e) => handleItemClick(item, e.ctrlKey || e.metaKey)}
               onDoubleClick={() => handleItemDoubleClick(item)}
             >
-              <div className="explorer-item-icon">
+              <div className={styles.explorerItemIcon}>
                 <img src={getDefaultIcon(item)} width={32} alt="" />
               </div>
-              <div className="explorer-item-name">{item.name}</div>
+              <div className={styles.explorerItemName}>{item.name}</div>
             </div>
           ))}
         </div>
       </div>
 
       {showStatusBar && (
-        <div className="explorer-status-bar">
-          <div className="status-section">
+        <div className={styles.explorerStatusBar}>
+          <div className={styles.statusSection}>
             {selectedCount > 0 ? (
               <>
                 {selectedCount} object(s) selected

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Taskbar.css';
+import styles from './Taskbar.module.css';
 import type { WindowID } from './types';
 import questionIcon from '../assets/help_question_mark.ico';
 
@@ -31,24 +31,24 @@ export const Taskbar = ({ activeWindowId, openWindows, onClick, onInfoClick }: {
   const formattedTime = currentTime.toLocaleTimeString();
 
   return (
-    <div className="taskbar-container">
-      <div className="taskbar-windows">
+    <div className={styles.taskbarContainer}>
+      <div className={styles.taskbarWindows}>
         {/* Dynamically render a button for each "open window" */}
         {openWindows?.map((config) => (
-          <button key={config.title} className={`taskbar-window-button ${activeWindowId === config.id ? 'active' : ''}`} onClick={() => onClick(config.id)}>
+          <button key={config.title} className={`${styles.taskbarWindowButton} ${activeWindowId === config.id ? styles.active : ''}`} onClick={() => onClick(config.id)}>
             <img src={config.icon} alt={config.title} />
             <span>{config.title}</span>
           </button>
         ))}
       </div>
 
-      <div className="taskbar-tray">
+      <div className={styles.taskbarTray}>
         {onInfoClick && (
-          <button className="tray-icon-button" onClick={onInfoClick} title="About this site">
-            <img src={questionIcon} alt="Info" className="tray-icon" />
+          <button className={styles.trayIconButton} onClick={onInfoClick} title="About this site">
+            <img src={questionIcon} alt="Info" className={styles.trayIcon} />
           </button>
         )}
-        <div className="taskbar-clock">{formattedTime}</div>
+        <div className={styles.taskbarClock}>{formattedTime}</div>
       </div>
     </div>
   );

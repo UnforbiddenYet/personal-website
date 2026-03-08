@@ -1,11 +1,8 @@
 /* --- The Main Paint Window --- */
 .window {
-  background-color: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #000000;
-  border-bottom: 2px solid #000000;
-  box-shadow: 2px 2px 0 #000000;
+  @mixin win95-surface;
+  @mixin win95-raised;
+  box-shadow: 2px 2px 0 var(--win95-black);
   padding: 3px;
   display: flex;
   flex-direction: column;
@@ -24,10 +21,10 @@
 .title-bar {
   background: linear-gradient(
     to right,
-    #000080,
-    #1084d0
-  ); /* Windows gradient blue */
-  color: #ffffff;
+    var(--win95-navy),
+    var(--win95-highlight)
+  );
+  color: var(--win95-white);
   padding: 4px 6px;
   display: flex;
   justify-content: space-between;
@@ -54,11 +51,8 @@
 
 .window-controls button {
   font-family: "Silkscreen", sans-serif;
-  background-color: #c0c0c0;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  @mixin win95-surface;
+  @mixin win95-raised 1px;
   width: 20px;
   height: 20px;
   margin-left: 2px;
@@ -70,10 +64,7 @@
   line-height: 1;
 
   &:active:not(:disabled) {
-    border-top: 1px solid #000000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    @mixin win95-sunken 1px;
   }
 
   &:disabled {
@@ -83,7 +74,7 @@
 
 /* --- 2. Menu Bar --- */
 .menu-bar {
-  background-color: #c0c0c0;
+  @mixin win95-surface;
   padding: 3px 0;
 }
 .menu-bar ul {
@@ -96,12 +87,12 @@
   text-decoration: none;
   border: none;
   background: none;
-  color: #000;
+  color: var(--win95-black);
   padding: 2px 8px;
   cursor: pointer;
   font-family: inherit;
 }
 .menu-bar li button:hover {
-  background-color: #000080;
-  color: #ffffff;
+  background-color: var(--win95-navy);
+  color: var(--win95-white);
 }

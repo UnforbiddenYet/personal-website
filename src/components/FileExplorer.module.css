@@ -4,7 +4,7 @@
   height: 100%;
   font-family: var(--ui-font-family), sans-serif;
   font-size: 11px;
-  background-color: #c0c0c0;
+  @mixin win95-surface;
 }
 
 /* Toolbar */
@@ -12,19 +12,16 @@
   display: flex;
   align-items: center;
   padding: 2px 0;
-  background-color: #c0c0c0;
-  border-bottom: 1px solid #808080;
+  @mixin win95-surface;
+  border-bottom: 1px solid var(--win95-dark-gray);
   gap: 4px;
 }
 
 .toolbar-button {
   width: 24px;
   height: 22px;
-  background-color: #c0c0c0;
-  border-top: 1px solid #ffffff;
-  border-left: 1px solid #ffffff;
-  border-right: 1px solid #000000;
-  border-bottom: 1px solid #000000;
+  @mixin win95-surface;
+  @mixin win95-raised 1px;
   cursor: pointer;
   font-size: 14px;
   display: flex;
@@ -34,15 +31,12 @@
 }
 
 .toolbar-button:active:not(:disabled) {
-  border-top: 1px solid #000000;
-  border-left: 1px solid #000000;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
+  @mixin win95-sunken 1px;
   padding: 1px 0 0 1px;
 }
 
 .toolbar-button:disabled {
-  color: #808080;
+  color: var(--win95-dark-gray);
   cursor: default;
 }
 
@@ -51,10 +45,10 @@
   height: 20px;
   background: linear-gradient(
     to right,
-    #808080 0%,
-    #808080 50%,
-    #ffffff 50%,
-    #ffffff 100%
+    var(--win95-dark-gray) 0%,
+    var(--win95-dark-gray) 50%,
+    var(--win95-white) 50%,
+    var(--win95-white) 100%
   );
   margin: 0 2px;
 }
@@ -68,16 +62,13 @@
 
 .address-label {
   font-size: 11px;
-  color: #000000;
+  color: var(--win95-black);
 }
 
 .address-path {
   flex: 1;
-  background-color: #ffffff;
-  border-top: 1px solid #808080;
-  border-left: 1px solid #808080;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
+  background-color: var(--win95-white);
+  @mixin win95-sunken-soft 1px;
   padding: 2px 4px;
   font-size: 11px;
   overflow: hidden;
@@ -89,7 +80,7 @@
 .explorer-content {
   flex: 1;
   overflow: auto;
-  background-color: #ffffff;
+  background-color: var(--win95-white);
   padding: 4px;
 }
 
@@ -113,13 +104,13 @@
 }
 
 .explorer-item.selected {
-  background-color: #000080;
-  color: #ffffff;
+  background-color: var(--win95-navy);
+  color: var(--win95-white);
 }
 
 .explorer-item.selected .explorer-item-name {
-  background-color: #000080;
-  color: #ffffff;
+  background-color: var(--win95-navy);
+  color: var(--win95-white);
 }
 
 .explorer-item-icon {
@@ -146,25 +137,17 @@
   display: flex;
   align-items: center;
   padding: 2px 4px;
-  background-color: #c0c0c0;
-  border-top: 1px solid #ffffff;
+  @mixin win95-surface;
+  border-top: 1px solid var(--win95-white);
   min-height: 20px;
 }
 
 .status-section {
   flex: 1;
   font-size: 11px;
-  color: #000000;
+  color: var(--win95-black);
   padding: 0 4px;
-  border-top: 1px solid #808080;
-  border-left: 1px solid #808080;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  background-color: #c0c0c0;
+  @mixin win95-sunken-soft 1px;
+  @mixin win95-surface;
   line-height: 16px;
-}
-
-/* List view (for future implementation) */
-.explorer-list-view {
-  /* To be implemented */
 }
