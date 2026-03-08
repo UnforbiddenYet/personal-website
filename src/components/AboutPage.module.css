@@ -1,7 +1,7 @@
 .about {
   overflow: auto;
   padding: 8px;
-  background: #c0c0c0; /* Classic dialog gray */
+  @mixin win95-surface;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -16,17 +16,14 @@
 
 /* Multi-panel section container */
 .section {
-  background: #c0c0c0;
+  @mixin win95-surface;
 }
 
 /* Section header - raised tab style */
 .sectionHeader {
-  background: #c0c0c0;
+  @mixin win95-surface;
   padding: 4px 10px;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #808080;
-  border-bottom: 2px solid #808080;
+  @mixin win95-raised-soft;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 11px;
@@ -35,24 +32,16 @@
 
 /* Section content - sunken white area */
 .sectionContent {
-  background: #ffffff;
-  border-top: 2px solid #808080;
-  border-left: 2px solid #808080;
-  border-right: 2px solid #dfdfdf;
-  border-bottom: 2px solid #dfdfdf;
-  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff;
+  background: var(--win95-white);
+  @mixin win95-sunken-content;
   padding: 10px;
   display: flex;
   gap: 10px;
 }
 
 .content {
-  background: #ffffff;
-  border-top: 2px solid #808080;
-  border-left: 2px solid #808080;
-  border-right: 2px solid #dfdfdf;
-  border-bottom: 2px solid #dfdfdf;
-  box-shadow: inset 1px 1px 0 #000000, inset -1px -1px 0 #ffffff;
+  background: var(--win95-white);
+  @mixin win95-sunken-content;
   padding: 10px;
 }
 
@@ -71,8 +60,8 @@
 
 /* Image container - classic black border */
 .imageContainer {
-  background: #ffffff;
-  border: 2px solid #000000;
+  background: var(--win95-white);
+  border: 2px solid var(--win95-black);
   padding: 2px;
   display: inline-block;
 }
@@ -83,7 +72,7 @@
   padding: 10px 0;
 
   small {
-    color: #808080;
+    color: var(--win95-dark-gray);
   }
 }
 
@@ -100,11 +89,8 @@
 .badge {
   display: inline-block;
   min-width: 88px;
-  background: #c0c0c0;
-  border-top: 1px solid #808080;
-  border-left: 1px solid #808080;
-  border-right: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
+  @mixin win95-surface;
+  @mixin win95-sunken-soft 1px;
   padding: 5px 15px;
   text-align: center;
   font-size: 11px;
@@ -114,15 +100,15 @@
 /* Visitor counter - LED display style */
 .visitorCounter {
   display: inline-block;
-  background: #000000;
-  color: #00ff00; /* Green LED style */
+  background: var(--win95-black);
+  color: #00ff00;
   font-family: 'Courier New', monospace;
   font-weight: bold;
   padding: 4px 12px;
-  border-top: 2px solid #808080;
-  border-left: 2px solid #808080;
-  border-right: 2px solid #dfdfdf;
-  border-bottom: 2px solid #dfdfdf;
+  border-top: 2px solid var(--win95-dark-gray);
+  border-left: 2px solid var(--win95-dark-gray);
+  border-right: 2px solid var(--win95-light-gray);
+  border-bottom: 2px solid var(--win95-light-gray);
   letter-spacing: 3px;
   font-size: 14px;
 }
