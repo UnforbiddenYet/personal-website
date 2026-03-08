@@ -1,73 +1,147 @@
+@font-face {
+  font-family: "MS Sans Serif";
+  src:
+    local("MS Sans Serif"),
+    url("./assets/MS Sans Serif 8pt.ttf") format("opentype");
+}
+
 :root {
-  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400; */
+  --ui-font-family: "MS Sans Serif";
 
-  /* color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424; */
+  /* Win95 Color Palette */
+  --win95-gray: #c0c0c0;
+  --win95-dark-gray: #808080;
+  --win95-light-gray: #dfdfdf;
+  --win95-white: #ffffff;
+  --win95-black: #000000;
+  --win95-navy: #000080;
+  --win95-teal: #008080;
+  --win95-highlight: #1084d0;
+}
 
+body {
+  font-family: var(--ui-font-family), sans-serif;
+  font-size: 16px;
+  background: var(--win95-teal);
+  margin: 0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-} */
-
-/* a:hover {
-  color: #535bf2;
-} */
-
-body {
-  margin: 0;
-  /* display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh; */
-}
-
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
-
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
-
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Windows 95 Scrollbars */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: var(--win95-gray) var(--win95-light-gray);
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--win95-light-gray);
+}
+
+*::-webkit-scrollbar-thumb {
+  @mixin win95-surface;
+  @mixin win95-raised;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #d4d4d4;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #a0a0a0;
+  @mixin win95-sunken;
+}
+
+*::-webkit-scrollbar-corner {
+  @mixin win95-surface;
+}
+
+/* Scrollbar buttons (arrows) */
+*::-webkit-scrollbar-button {
+  @mixin win95-surface;
+  @mixin win95-raised;
+  width: 16px;
+  height: 16px;
+}
+
+*::-webkit-scrollbar-button:hover {
+  background: #d4d4d4;
+}
+
+*::-webkit-scrollbar-button:active {
+  @mixin win95-sunken;
+}
+
+/* Arrow icons for scrollbar buttons */
+*::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,4 4,12 12,12" fill="%23000"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+*::-webkit-scrollbar-button:vertical:increment {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="4,4 12,4 8,12" fill="%23000"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+*::-webkit-scrollbar-button:horizontal:decrement {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="4,8 12,4 12,12" fill="%23000"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+*::-webkit-scrollbar-button:horizontal:increment {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="4,4 4,12 12,8" fill="%23000"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.win95-border-raised {
+  @mixin win95-raised;
+}
+
+.win95-border-sunken {
+  @mixin win95-sunken;
+}
+
+.win95-button {
+  @mixin win95-surface;
+  @mixin win95-raised;
+  display: inline-block;
+  padding: 4px;
+  color: var(--win95-black);
+  text-decoration: none;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:active {
+    @mixin win95-sunken;
+  }
+
+  &:focus {
+    outline: 1px dotted var(--win95-black);
+    outline-offset: -4px;
+  }
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid var(--win95-dark-gray);
+  border-bottom: 1px solid var(--win95-white);
+  width: 100%;
+  height: 0;
+  margin: 8px 0;
 }
