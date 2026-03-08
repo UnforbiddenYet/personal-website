@@ -1,5 +1,5 @@
 .container {
-  background: #ffffff;
+  background: var(--win95-white);
   padding: 20px;
   height: 100%;
   display: flex;
@@ -10,12 +10,9 @@
 .content {
   text-align: center;
   padding: 40px;
-  background: #c0c0c0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #808080;
-  border-bottom: 2px solid #808080;
-  box-shadow: inset -1px -1px 0 #000000, inset 1px 1px 0 #dfdfdf;
+  @mixin win95-surface;
+  @mixin win95-raised-soft;
+  box-shadow: inset -1px -1px 0 var(--win95-black), inset 1px 1px 0 var(--win95-light-gray);
 }
 
 .content h2 {
@@ -45,5 +42,11 @@
   }
   50%, 100% {
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blinker {
+    animation: none;
   }
 }
