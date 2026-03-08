@@ -1,6 +1,6 @@
 .container {
   background: var(--win95-white);
-  padding: 20px;
+  padding: var(--space-6);
   height: 100%;
   display: flex;
   align-items: center;
@@ -16,14 +16,14 @@
 }
 
 .content h2 {
-  margin: 10px 0;
-  font-size: 18px;
+  margin: var(--space-4) 0;
+  font-size: var(--font-size-lg);
   text-transform: uppercase;
 }
 
 .content p {
-  margin: 8px 0;
-  line-height: 1.4;
+  margin: var(--space-3) 0;
+  line-height: var(--line-height-normal);
 }
 
 .content img {
@@ -31,8 +31,8 @@
 }
 
 .blinker {
-  font-size: 32px;
-  margin-top: 20px;
+  font-size: var(--font-size-2xl);
+  margin-top: var(--space-6);
   animation: blink 1.5s infinite;
 }
 

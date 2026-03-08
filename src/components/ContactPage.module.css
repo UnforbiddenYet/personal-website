@@ -1,21 +1,21 @@
 .contact {
   overflow: auto;
-  padding: 8px;
+  padding: var(--space-3);
   @mixin win95-surface;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-4);
   height: 100%;
 }
 
 .header {
   text-align: center;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 
   h2 {
     text-transform: uppercase;
-    font-size: 18px;
-    margin: 8px 0;
+    font-size: var(--font-size-lg);
+    margin: var(--space-3) 0;
   }
 
   img {
@@ -28,40 +28,32 @@
 }
 
 .sectionHeader {
-  @mixin win95-surface;
-  padding: 4px 10px;
-  @mixin win95-raised-soft;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 11px;
-  letter-spacing: 0.5px;
+  @mixin win95-section-header;
 }
 
 .content {
-  background: var(--win95-white);
-  @mixin win95-sunken-content;
-  padding: 10px;
+  @mixin win95-content-panel;
 
   p {
-    margin: 0 0 10px 0;
-    line-height: 1.4;
+    margin: 0 0 var(--space-4) 0;
+    line-height: var(--line-height-normal);
   }
 }
 
 .buttonGroup {
   display: flex;
-  gap: 8px;
+  gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 }
 
 .footer {
   text-align: center;
-  padding: 10px 0;
+  padding: var(--space-4) 0;
 
   p {
-    margin: 4px 0;
+    margin: var(--space-2) 0;
   }
 
   small {

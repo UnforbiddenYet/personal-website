@@ -12,32 +12,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px;
+  padding: 0 var(--space-2);
 }
 
 .taskbar-windows {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-2);
   height: 100%;
 }
 
 .taskbar-window-button {
   height: 26px;
-  padding: 0 10px 0 5px;
-  @mixin win95-surface;
-  @mixin win95-raised-soft;
-
-  display: flex;
-  align-items: center;
+  padding: 0 var(--space-4) 0 5px;
+  @mixin win95-toolbar-button;
   white-space: nowrap;
-  font-size: 14px;
+  font-size: var(--font-size-base);
   font-family: inherit;
 
   &.active {
-    @mixin win95-sunken-soft;
-    box-shadow: inset 0px 0px 0px 1px var(--win95-gray);
-    background-color: #e9e9e9;
+    @mixin win95-toolbar-button-active;
   }
 
   img {
@@ -65,11 +59,11 @@
 }
 
 .tray-icon-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--win95-tray-hover);
 }
 
 .tray-icon-button:active {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--win95-tray-active);
 }
 
 .tray-icon {
@@ -81,11 +75,11 @@
 .taskbar-clock {
   height: 26px;
   min-width: 75px;
-  padding: 0 8px;
+  padding: 0 var(--space-3);
   @mixin win95-sunken-soft;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: var(--font-size-base);
 }
