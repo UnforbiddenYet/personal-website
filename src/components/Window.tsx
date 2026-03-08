@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react"
 
-import './Window.css'
+import styles from './Window.module.css'
 
 type Props = {
   title: string,
@@ -39,20 +39,20 @@ export const Window = ({
   onTitleBarMouseDown,
 }: PropsWithChildren<Props>) => {
   return (
-    <div className="window" style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z, width, height }}>
-      <header className="title-bar" onMouseDown={onTitleBarMouseDown}>
-        <div className="title-text">
-          {icon && <img src={icon} alt="" className="title-icon" />}
+    <div className={styles.window} style={{ left: `${position.x}px`, top: `${position.y}px`, zIndex: position.z, width, height }}>
+      <header className={styles.titleBar} onMouseDown={onTitleBarMouseDown}>
+        <div className={styles.titleText}>
+          {icon && <img src={icon} alt="" className={styles.titleIcon} />}
           {title}
         </div>
-        <div className="window-controls">
+        <div className={styles.windowControls}>
           {controls.map((control) => (
             <button key={control.label} aria-label={control.label} disabled={control.disabled} onClick={control.onClick} style={{ ...(control.cursor ? { cursor: control.cursor } : {}) }}>{control.icon}</button>
           ))}
         </div>
       </header>
 
-      {menu.length ? <nav className="menu-bar">
+      {menu.length ? <nav className={styles.menuBar}>
         <ul>
           {menu.map(item => (
             <li key={item.title} onClick={item.onClick}>
@@ -61,7 +61,7 @@ export const Window = ({
         </ul>
       </nav> : null}
 
-      <div className="window-body">
+      <div className={styles.windowBody}>
         {children}
       </div>
     </div>

@@ -6,7 +6,7 @@ import image from '../assets/tool_image.png';
 import text from '../assets/tool_text.png';
 import monaLisa from '../assets/mona-lisa.png';
 
-import './PaintApp.css';
+import styles from './PaintApp.module.css';
 
 const colors = [
   "#000",
@@ -54,13 +54,13 @@ export function PaintApp() {
 
   return (
     <>
-      <div className="paint-body">
-        <aside className="toolbar">
+      <div className={styles.paintBody}>
+        <aside className={styles.toolbar}>
           <div className="separator"></div>
           {tools.map(([tool, imgSrc]) => (
             <div
               key={tool}
-              className={`tool-icon ${paintCanvasProps.isToolActive(tool) ? 'active' : ''}`}
+              className={`${styles.toolIcon} ${paintCanvasProps.isToolActive(tool) ? styles.active : ''}`}
               onClick={() => handleToolClick(tool)}
               title={tool === 'text' ? 'Add Text (A)' : tool === 'image' ? 'Insert Image' : tool}
             >
@@ -69,25 +69,25 @@ export function PaintApp() {
           ))}
         </aside>
 
-        <main className="canvas" {...{
+        <main className={styles.canvas} {...{
           onMouseDown: paintCanvasProps.startDrawing,
           onMouseUp: paintCanvasProps.finishDrawing,
           onMouseMove: paintCanvasProps.draw,
           onMouseLeave: paintCanvasProps.finishDrawing,
         }}>
-          <canvas className="paint-canvas" {...{
+          <canvas className={styles.paintCanvas} {...{
             ref: paintCanvasProps.ref,
           }} />
         </main>
       </div>
 
-      <footer className="color-palette">
-        <div className="color-selected">
-          <div className="color-swatch" style={{ backgroundColor: paintCanvasProps.activeColor }}></div>
+      <footer className={styles.colorPalette}>
+        <div className={styles.colorSelected}>
+          <div className={styles.colorSwatch} style={{ backgroundColor: paintCanvasProps.activeColor }}></div>
         </div>
-        <div className="color-swatches">
+        <div className={styles.colorSwatches}>
           {colors.map(c => (
-            <button key={c} className="color-swatch" style={{ backgroundColor: c }} onClick={() => paintCanvasProps.setColor(c)}></button>
+            <button key={c} className={styles.colorSwatch} style={{ backgroundColor: c }} onClick={() => paintCanvasProps.setColor(c)}></button>
           ))}
         </div>
       </footer>
