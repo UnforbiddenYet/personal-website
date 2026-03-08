@@ -1,4 +1,3 @@
-import "./Home.css";
 import { useState } from "react";
 
 import { WindowIDs } from "./components/types";
@@ -15,14 +14,16 @@ import { useWindowManagerContext } from "./contexts/WindowManagerContext";
 import { DESKTOP_SHORTCUTS } from "./windowConfig";
 import { TaskbarInfo } from "./components/TaskbarInfo";
 
+import styles from "./Home.module.css";
+
 export function Home() {
   const windowManager = useWindowManagerContext();
   const openWindows = windowManager.windows.filter(Boolean);
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <div className="desktop">
-      <div className="desktop-shortcuts">
+    <div className={styles.desktop}>
+      <div className={styles.desktopShortcuts}>
         {DESKTOP_SHORTCUTS.map((windowConfig) => (
           <button
             key={windowConfig.id}

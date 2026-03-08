@@ -1,17 +1,11 @@
-.app-container {
-  background-color: #008080; /* Classic Windows desktop teal */
-  /* This makes the font sharp and not anti-aliased */
-  /* font-smooth: never;
-  -webkit-font-smoothing: none; */
+.desktop {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--win95-teal);
   display: flex;
   min-height: 100vh;
   min-width: 100vw;
   margin: 0;
-}
-
-.desktop {
-  flex: 1;
-  overflow: hidden;
 }
 
 .desktop-shortcuts {
@@ -43,7 +37,7 @@
   span {
     line-height: 16px;
     font-size: 12px;
-    color: #fff;
+    color: var(--win95-white);
     text-overflow: ellipsis;
   }
 }
