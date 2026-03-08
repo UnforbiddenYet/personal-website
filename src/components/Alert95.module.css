@@ -1,16 +1,17 @@
 .content {
   @mixin win95-surface;
+
   padding: var(--space-5) 12px;
   display: flex;
   gap: 12px;
   align-items: flex-start;
 }
 
-.iconContainer {
+.icon-container {
   flex-shrink: 0;
 }
 
-.iconContainer img {
+.icon-container img {
   image-rendering: pixelated;
   display: block;
 }
