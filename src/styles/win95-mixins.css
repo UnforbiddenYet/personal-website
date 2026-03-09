@@ -1,4 +1,4 @@
-/* Win95 border pattern mixins — used via postcss-mixins */
+/* Win95 border pattern mixins */
 
 @define-mixin win95-raised $size: 2px {
   border-top: $size solid var(--win95-white);
@@ -28,34 +28,44 @@
   border-bottom: $size solid var(--win95-white);
 }
 
-@define-mixin win95-sunken-content {
-  border-top: var(--border-2) solid var(--win95-dark-gray);
-  border-left: var(--border-2) solid var(--win95-dark-gray);
-  border-right: var(--border-2) solid var(--win95-light-gray);
-  border-bottom: var(--border-2) solid var(--win95-light-gray);
-  box-shadow: inset 1px 1px 0 var(--win95-black), inset -1px -1px 0 var(--win95-white);
+/* Win95 button mixins */
+
+@define-mixin win95-button-pressed {
+  background-color: var(--win95-active-bg);
+  box-shadow: inset 0 0 0 1px var(--win95-gray);
 }
 
-@define-mixin win95-surface {
-  background-color: var(--win95-gray);
+@define-mixin win95-button-focus {
+  &:focus:not([aria-pressed="true"]) {
+    outline: var(--border-1) dotted var(--win95-black);
+    outline-offset: calc(-1 * var(--space-2));
+  }
 }
 
-@define-mixin win95-toolbar-button {
+@define-mixin win95-button-raised {
+  @mixin win95-surface;
+  @mixin win95-raised;
+
+  &:is(:active, [aria-pressed="true"]) {
+    @mixin win95-sunken;
+    @mixin win95-button-pressed;
+  }
+}
+
+@define-mixin win95-button-raised-soft {
   @mixin win95-surface;
   @mixin win95-raised-soft;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
+  &:is(:active, [aria-pressed="true"]) {
+    @mixin win95-sunken-soft;
+    @mixin win95-button-pressed;
+  }
 }
 
-@define-mixin win95-toolbar-button-active {
-  @mixin win95-sunken-soft;
+/* Misc */
 
-  background-color: var(--win95-active-bg);
-  box-shadow: inset 0 0 0 1px var(--win95-gray);
+@define-mixin win95-surface {
+  background-color: var(--win95-gray);
 }
 
 @define-mixin win95-section-header {
@@ -77,4 +87,14 @@
   @mixin win95-sunken-content;
 
   padding: var(--space-5);
+}
+
+@define-mixin win95-sunken-content {
+  border-top: var(--border-2) solid var(--win95-dark-gray);
+  border-left: var(--border-2) solid var(--win95-dark-gray);
+  border-right: var(--border-2) solid var(--win95-light-gray);
+  border-bottom: var(--border-2) solid var(--win95-light-gray);
+  box-shadow:
+    inset 1px 1px 0 var(--win95-black),
+    inset -1px -1px 0 var(--win95-white);
 }

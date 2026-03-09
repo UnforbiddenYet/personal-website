@@ -50,6 +50,19 @@
   padding: var(--space-5) 0;
 }
 
+.button-group-button {
+  @mixin win95-button-raised;
+  @mixin win95-button-focus;
+
+  display: inline-block;
+  padding: var(--space-2);
+  color: var(--win95-black);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .footer {
   text-align: center;
   padding: var(--space-5) 0;

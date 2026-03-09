@@ -23,23 +23,22 @@
 }
 
 .taskbar-window-button {
+  @mixin win95-button-raised;
+
   height: var(--size-13);
   padding: 0 var(--space-5) 0 var(--space-2-5);
-
-  @mixin win95-toolbar-button;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   white-space: nowrap;
   font-size: var(--font-size-base);
   font-family: inherit;
+}
 
-  &.active {
-    @mixin win95-toolbar-button-active;
-  }
-
-  img {
-    height: var(--size-9);
-    margin-right: var(--space-2-5);
-  }
+.taskbar-window-button-img {
+  height: var(--size-9);
+  margin-right: var(--space-2-5);
 }
 
 .taskbar-tray {
