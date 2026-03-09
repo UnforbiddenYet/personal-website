@@ -4,7 +4,7 @@
   min-height: 0; /* Fix for flexbox overflow */
 }
 
-.paint-body :global(.separator) {
+.paint-body :global(hr) {
   margin: 0;
 }
 
@@ -18,23 +18,20 @@
   gap: var(--space-4);
 }
 
-.tool-icon {
+.tool-button {
+  @mixin win95-button-raised-soft;
+  @mixin win95-button-focus;
+
   width: var(--size-20);
   height: var(--size-20);
-
-  @mixin win95-toolbar-button;
-
   display: grid;
   place-content: center;
+  align-items: center;
   font-size: var(--font-size-xl);
+  cursor: pointer;
 }
 
-.tool-icon.active,
-.tool-icon:active {
-  @mixin win95-toolbar-button-active;
-}
-
-.tool-icon img {
+.tool-button-img {
   width: var(--size-20);
   height: var(--size-20);
 }

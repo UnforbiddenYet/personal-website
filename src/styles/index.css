@@ -1,97 +1,10 @@
+@import url("./tokens");
+
 @font-face {
   font-family: "MS Sans Serif";
   src:
     local("MS Sans Serif"),
     url("../assets/MS Sans Serif 8pt.ttf") format("truetype");
-}
-
-:root {
-  --ui-font-family: "MS Sans Serif";
-  --window-font-family: "Silkscreen";
-
-  /* Win95 Color Palette */
-  --win95-gray: #c0c0c0;
-  --win95-dark-gray: #808080;
-  --win95-light-gray: #dfdfdf;
-  --win95-white: #fff;
-  --win95-black: #000;
-  --win95-navy: #000080;
-  --win95-teal: #008080;
-  --win95-highlight: #1084d0;
-
-  /* Interactive state colors */
-  --win95-active-bg: #e9e9e9;
-  --win95-hover-bg: #d4d4d4;
-  --win95-pressed-bg: #a0a0a0;
-  --win95-panel-bg: #f0f0f0;
-  --win95-error-bg: #fee;
-  --win95-muted-text: #666;
-  --win95-led-green: #0f0;
-  --win95-tray-hover: rgb(255 255 255 / 30%);
-  --win95-tray-active: rgb(0 0 0 / 10%);
-
-  /* Spacing scale — N × 2px base */
-  --space-0-5: 1px;
-  --space-1: 2px;
-  --space-1-5: 3px;
-  --space-2: 4px;
-  --space-2-5: 5px;
-  --space-3: 6px;
-  --space-4: 8px;
-  --space-4-5: 9px;
-  --space-5: 10px;
-  --space-6: 12px;
-  --space-7-5: 15px;
-  --space-8: 16px;
-  --space-10: 20px;
-  --space-20: 40px;
-
-  /* Typography */
-  --font-size-xs: 11px;
-  --font-size-sm: 12px;
-  --font-size-base: 14px;
-  --font-size-md: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 24px;
-  --font-size-2xl: 32px;
-
-  /* Font weights */
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  /* Line heights */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
-
-  /* Letter spacing */
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.025em;
-
-  /* Border widths */
-  --border-1: 1px;
-  --border-2: 2px;
-
-  /* Sizes — N × 2px base */
-  --size-8: 16px;
-  --size-9: 18px;
-  --size-10: 20px;
-  --size-11: 22px;
-  --size-12: 24px;
-  --size-13: 26px;
-  --size-16: 32px;
-  --size-17-5: 35px;
-  --size-20: 40px;
-  --size-25: 50px;
-  --size-30: 60px;
-  --size-32: 64px;
-  --size-36: 72px;
-  --size-37-5: 75px;
-  --size-40: 80px;
-  --size-44: 88px;
 }
 
 body {
@@ -181,37 +94,7 @@ body {
   background-position: center;
 }
 
-.win95-border-raised {
-  @mixin win95-raised;
-}
-
-.win95-border-sunken {
-  @mixin win95-sunken;
-}
-
-.win95-button {
-  @mixin win95-surface;
-  @mixin win95-raised;
-
-  display: inline-block;
-  padding: var(--space-2);
-  color: var(--win95-black);
-  text-decoration: none;
-  font-size: var(--font-size-base);
-  cursor: pointer;
-  font-family: inherit;
-
-  &:active {
-    @mixin win95-sunken;
-  }
-
-  &:focus {
-    outline: var(--border-1) dotted var(--win95-black);
-    outline-offset: calc(-1 * var(--space-2));
-  }
-}
-
-.separator {
+hr {
   border: none;
   border-top: var(--border-1) solid var(--win95-dark-gray);
   border-bottom: var(--border-1) solid var(--win95-white);
