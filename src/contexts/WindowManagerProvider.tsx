@@ -1,11 +1,11 @@
 import { type ReactNode } from 'react';
 import { WindowManagerContext } from './WindowManagerContext'
 import { useWindowManager } from "./useWindowManager";
-import type { NewWindowType } from '../components/types';
+import type { AnyNewWindowType } from '../components/types';
 
 interface WindowManagerProviderProps {
   children: ReactNode;
-  initialWindows?: NewWindowType<any>[];
+  initialWindows?: AnyNewWindowType[];
 }
 
 export function WindowManagerProvider({ children, initialWindows = [] }: WindowManagerProviderProps) {
