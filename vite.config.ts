@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import postcssMixins from 'postcss-mixins'
+import postcssNested from 'postcss-nested'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,7 +11,7 @@ export default defineConfig({
       localsConvention: 'camelCaseOnly',
     },
     postcss: {
-      plugins: [postcssMixins({ mixinsFiles: ['src/styles/win95-mixins.css'] })],
+      plugins: [postcssMixins({ mixinsFiles: ['src/styles/win95-mixins.css'] }), postcssNested()],
     },
   },
 })
