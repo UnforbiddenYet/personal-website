@@ -42,10 +42,15 @@ export const Taskbar = ({
         {openWindows?.map((config) => (
           <button
             key={config.title}
-            className={`${styles.taskbarWindowButton} ${activeWindowId === config.id ? styles.active : ""}`}
+            aria-pressed={activeWindowId === config.id}
+            className={styles.taskbarWindowButton}
             onClick={() => onClick(config.id)}
           >
-            <img src={config.icon} alt={config.title} />
+            <img
+              className={styles.taskbarWindowButtonImg}
+              src={config.icon}
+              alt={config.title}
+            />
             <span>{config.title}</span>
           </button>
         ))}

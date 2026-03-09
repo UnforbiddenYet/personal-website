@@ -1,12 +1,12 @@
 import usePaintCanvas, { type PaintTool } from "../hooks/useCanvasDraw";
-import pencil from '../assets/tool_pencil.png'
-import spray from '../assets/tool_spray.png'
-import eraser from '../assets/tool_eraser.png';
-import image from '../assets/tool_image.png';
-import text from '../assets/tool_text.png';
-import monaLisa from '../assets/mona-lisa.png';
+import pencil from "../assets/tool_pencil.png";
+import spray from "../assets/tool_spray.png";
+import eraser from "../assets/tool_eraser.png";
+import image from "../assets/tool_image.png";
+import text from "../assets/tool_text.png";
+import monaLisa from "../assets/mona-lisa.png";
 
-import styles from './PaintApp.module.css';
+import styles from "./PaintApp.module.css";
 
 const colors = [
   "#000",
@@ -27,12 +27,12 @@ const colors = [
   "#ff00ff",
 ];
 const tools: [PaintTool, string][] = [
-  ['paint', pencil],
-  ['spray', spray],
-  ['erase', eraser],
-  ['text', text],
-  ['image', image],
-]
+  ["paint", pencil],
+  ["spray", spray],
+  ["erase", eraser],
+  ["text", text],
+  ["image", image],
+];
 
 export function PaintApp() {
   const paintCanvasProps = usePaintCanvas({
@@ -43,7 +43,7 @@ export function PaintApp() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file && file.type.startsWith("image/")) {
       paintCanvasProps.insertImage(file);
     }
   };
@@ -56,38 +56,59 @@ export function PaintApp() {
     <>
       <div className={styles.paintBody}>
         <aside className={styles.toolbar}>
-          <div className="separator"></div>
+          <hr />
           {tools.map(([tool, imgSrc]) => (
-            <div
+            <button
               key={tool}
-              className={`${styles.toolIcon} ${paintCanvasProps.isToolActive(tool) ? styles.active : ''}`}
+              className={styles.toolButton}
+              aria-pressed={paintCanvasProps.isToolActive(tool)}
               onClick={() => handleToolClick(tool)}
-              title={tool === 'text' ? 'Add Text (A)' : tool === 'image' ? 'Insert Image' : tool}
+              title={
+                tool === "text"
+                  ? "Add Text (A)"
+                  : tool === "image"
+                    ? "Insert Image"
+                    : tool
+              }
             >
-              <img src={imgSrc} alt={tool} />
-            </div>
+              <img className={styles.toolButtonImg} src={imgSrc} alt={tool} />
+            </button>
           ))}
         </aside>
 
-        <main className={styles.canvas} {...{
-          onMouseDown: paintCanvasProps.startDrawing,
-          onMouseUp: paintCanvasProps.finishDrawing,
-          onMouseMove: paintCanvasProps.draw,
-          onMouseLeave: paintCanvasProps.finishDrawing,
-        }}>
-          <canvas className={styles.paintCanvas} {...{
-            ref: paintCanvasProps.ref,
-          }} />
+        <main
+          className={styles.canvas}
+          {...{
+            onMouseDown: paintCanvasProps.startDrawing,
+            onMouseUp: paintCanvasProps.finishDrawing,
+            onMouseMove: paintCanvasProps.draw,
+            onMouseLeave: paintCanvasProps.finishDrawing,
+          }}
+        >
+          <canvas
+            className={styles.paintCanvas}
+            {...{
+              ref: paintCanvasProps.ref,
+            }}
+          />
         </main>
       </div>
 
       <footer className={styles.colorPalette}>
         <div className={styles.colorSelected}>
-          <div className={styles.colorSwatch} style={{ backgroundColor: paintCanvasProps.activeColor }}></div>
+          <div
+            className={styles.colorSwatch}
+            style={{ backgroundColor: paintCanvasProps.activeColor }}
+          ></div>
         </div>
         <div className={styles.colorSwatches}>
-          {colors.map(c => (
-            <button key={c} className={styles.colorSwatch} style={{ backgroundColor: c }} onClick={() => paintCanvasProps.setColor(c)}></button>
+          {colors.map((c) => (
+            <button
+              key={c}
+              className={styles.colorSwatch}
+              style={{ backgroundColor: c }}
+              onClick={() => paintCanvasProps.setColor(c)}
+            ></button>
           ))}
         </div>
       </footer>
@@ -97,9 +118,9 @@ export function PaintApp() {
         ref={paintCanvasProps.fileInputRef}
         type="file"
         accept="image/*"
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleFileChange}
       />
     </>
-  )
+  );
 }
