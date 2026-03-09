@@ -2,11 +2,12 @@
   font-family: "MS Sans Serif";
   src:
     local("MS Sans Serif"),
-    url("./assets/MS Sans Serif 8pt.ttf") format("opentype");
+    url("../assets/MS Sans Serif 8pt.ttf") format("truetype");
 }
 
 :root {
   --ui-font-family: "MS Sans Serif";
+  --window-font-family: "Silkscreen";
 
   /* Win95 Color Palette */
   --win95-gray: #c0c0c0;
@@ -29,28 +30,73 @@
   --win95-tray-hover: rgb(255 255 255 / 30%);
   --win95-tray-active: rgb(0 0 0 / 10%);
 
-  /* Spacing scale */
+  /* Spacing scale — N × 2px base */
+  --space-0-5: 1px;
   --space-1: 2px;
+  --space-1-5: 3px;
   --space-2: 4px;
-  --space-3: 8px;
-  --space-4: 10px;
-  --space-5: 16px;
-  --space-6: 20px;
+  --space-2-5: 5px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-4-5: 9px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7-5: 15px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-20: 40px;
 
   /* Typography */
   --font-size-xs: 11px;
   --font-size-sm: 12px;
   --font-size-base: 14px;
+  --font-size-md: 16px;
   --font-size-lg: 18px;
   --font-size-xl: 24px;
   --font-size-2xl: 32px;
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.4;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Letter spacing */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+
+  /* Border widths */
+  --border-1: 1px;
+  --border-2: 2px;
+
+  /* Sizes — N × 2px base */
+  --size-8: 16px;
+  --size-9: 18px;
+  --size-10: 20px;
+  --size-11: 22px;
+  --size-12: 24px;
+  --size-13: 26px;
+  --size-16: 32px;
+  --size-17-5: 35px;
+  --size-20: 40px;
+  --size-25: 50px;
+  --size-30: 60px;
+  --size-32: 64px;
+  --size-36: 72px;
+  --size-37-5: 75px;
+  --size-40: 80px;
+  --size-44: 88px;
 }
 
 body {
   font-family: var(--ui-font-family), sans-serif;
-  font-size: 16px;
+  font-size: var(--font-size-md);
   background: var(--win95-teal);
   margin: 0;
   font-synthesis: none;
@@ -66,8 +112,8 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
+  width: var(--size-8);
+  height: var(--size-8);
 }
 
 *::-webkit-scrollbar-track {
@@ -98,8 +144,8 @@ body {
   @mixin win95-surface;
   @mixin win95-raised;
 
-  width: 16px;
-  height: 16px;
+  width: var(--size-8);
+  height: var(--size-8);
 }
 
 *::-webkit-scrollbar-button:hover {
@@ -148,10 +194,10 @@ body {
   @mixin win95-raised;
 
   display: inline-block;
-  padding: 4px;
+  padding: var(--space-2);
   color: var(--win95-black);
   text-decoration: none;
-  font-size: 1em;
+  font-size: var(--font-size-base);
   cursor: pointer;
   font-family: inherit;
 
@@ -160,16 +206,16 @@ body {
   }
 
   &:focus {
-    outline: 1px dotted var(--win95-black);
-    outline-offset: -4px;
+    outline: var(--border-1) dotted var(--win95-black);
+    outline-offset: calc(-1 * var(--space-2));
   }
 }
 
 .separator {
   border: none;
-  border-top: 1px solid var(--win95-dark-gray);
-  border-bottom: 1px solid var(--win95-white);
+  border-top: var(--border-1) solid var(--win95-dark-gray);
+  border-bottom: var(--border-1) solid var(--win95-white);
   width: 100%;
   height: 0;
-  margin: var(--space-3) 0;
+  margin: var(--space-4) 0;
 }

@@ -9,18 +9,18 @@
 }
 
 .toolbar {
-  width: 60px;
+  width: var(--size-30);
   flex-shrink: 0;
-  border-right: 1px solid var(--win95-dark-gray);
+  border-right: var(--border-1) solid var(--win95-dark-gray);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .tool-icon {
-  width: 40px;
-  height: 40px;
+  width: var(--size-20);
+  height: var(--size-20);
 
   @mixin win95-toolbar-button;
 
@@ -35,8 +35,8 @@
 }
 
 .tool-icon img {
-  width: 40px;
-  height: 40px;
+  width: var(--size-20);
+  height: var(--size-20);
 }
 
 .canvas {
@@ -56,20 +56,20 @@
 }
 
 .color-palette {
-  height: 50px;
+  height: var(--size-25);
   flex-shrink: 0;
-  border-top: 1px solid var(--win95-dark-gray);
-  padding: var(--space-2) var(--space-4);
+  border-top: var(--border-1) solid var(--win95-dark-gray);
+  padding: var(--space-2) var(--space-5);
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .color-selected {
-  height: 40px;
-  width: 40px;
-  padding: 9px;
+  height: var(--size-20);
+  width: var(--size-20);
+  padding: var(--space-4-5);
 
   @mixin win95-sunken-soft;
 
@@ -80,16 +80,16 @@
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  gap: 1px var(--space-2);
+  gap: var(--space-0-5) var(--space-2);
 }
 
 .color-swatch {
-  width: 20px;
-  height: 20px;
-  border: 1px solid var(--win95-dark-gray);
+  width: var(--size-10);
+  height: var(--size-10);
+  border: var(--border-1) solid var(--win95-dark-gray);
   cursor: pointer;
 }
 
 .color-swatch:active {
-  border: 1px solid var(--win95-white);
+  border: var(--border-1) solid var(--win95-white);
 }

@@ -3,8 +3,8 @@
   @mixin win95-surface;
   @mixin win95-raised;
 
-  box-shadow: 2px 2px 0 var(--win95-black);
-  padding: 3px;
+  box-shadow: var(--border-2) var(--border-2) 0 var(--win95-black);
+  padding: var(--space-1-5);
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -26,7 +26,7 @@
     var(--win95-highlight)
   );
   color: var(--win95-white);
-  padding: 4px 6px;
+  padding: var(--space-2);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,12 +36,12 @@
 .title-text {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-2);
 }
 
 .title-icon {
-  width: 16px;
-  height: 16px;
+  width: var(--size-8);
+  height: var(--size-8);
   image-rendering: pixelated;
 }
 
@@ -51,20 +51,20 @@
 }
 
 .window-controls button {
-  font-family: Silkscreen, sans-serif;
+  font-family: var(--window-font-family), sans-serif;
 
   @mixin win95-surface;
   @mixin win95-raised 1px;
 
-  width: 20px;
-  height: 20px;
-  margin-left: 2px;
-  font-weight: bold;
+  width: var(--size-10);
+  height: var(--size-10);
+  margin-left: var(--space-1);
+  font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  line-height: 1;
+  line-height: var(--line-height-normal);
 
   &:active:not(:disabled) {
     @mixin win95-sunken 1px;
@@ -79,13 +79,13 @@
 .menu-bar {
   @mixin win95-surface;
 
-  padding: 3px 0;
+  padding: var(--space-2) 0;
 }
 
 .menu-bar ul {
   list-style: none;
   margin: 0;
-  padding: 0 4px;
+  padding: 0 var(--space-2);
   display: flex;
 }
 
@@ -94,7 +94,7 @@
   border: none;
   background: none;
   color: var(--win95-black);
-  padding: var(--space-1) var(--space-3);
+  padding: var(--space-1) var(--space-4);
   cursor: pointer;
   font-family: inherit;
 }

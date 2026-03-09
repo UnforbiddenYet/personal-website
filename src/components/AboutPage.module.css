@@ -1,12 +1,12 @@
 .about {
   overflow: auto;
-  padding: var(--space-3);
+  padding: var(--space-4);
 
   @mixin win95-surface;
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: var(--space-7-5);
 
   h1 {
     text-transform: uppercase;
@@ -31,7 +31,7 @@
   @mixin win95-content-panel;
 
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .content {
@@ -42,7 +42,7 @@
   flex: 1;
 
   p {
-    margin: 0 0 var(--space-4) 0;
+    margin: 0 0 var(--space-5) 0;
     line-height: var(--line-height-normal);
   }
 }
@@ -54,15 +54,15 @@
 /* Image container - classic black border */
 .image-container {
   background: var(--win95-white);
-  border: 2px solid var(--win95-black);
-  padding: 2px;
+  border: var(--border-2) solid var(--win95-black);
+  padding: var(--space-1);
   display: inline-block;
 }
 
 /* Header section styling */
 .header {
   text-align: center;
-  padding: var(--space-4) 0;
+  padding: var(--space-5) 0;
 
   small {
     color: var(--win95-dark-gray);
@@ -72,24 +72,24 @@
 /* Badge list container */
 .badge-list {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-10);
   justify-content: center;
   flex-wrap: wrap;
-  padding: var(--space-4) 0;
+  padding: var(--space-5) 0;
 }
 
 /* Badges - status bar panel style */
 .badge {
   display: inline-block;
-  min-width: 88px;
+  min-width: var(--size-44);
 
   @mixin win95-surface;
   @mixin win95-sunken-soft 1px;
 
-  padding: 5px 15px;
+  padding: var(--space-2-5) var(--space-7-5);
   text-align: center;
   font-size: var(--font-size-xs);
-  line-height: 1.3;
+  line-height: var(--line-height-tight);
 }
 
 /* Visitor counter - LED display style */
@@ -98,32 +98,32 @@
   background: var(--win95-black);
   color: var(--win95-led-green);
   font-family: 'Courier New', monospace;
-  font-weight: bold;
-  padding: var(--space-2) 12px;
-  border-top: 2px solid var(--win95-dark-gray);
-  border-left: 2px solid var(--win95-dark-gray);
-  border-right: 2px solid var(--win95-light-gray);
-  border-bottom: 2px solid var(--win95-light-gray);
-  letter-spacing: 3px;
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-2) var(--space-6);
+  border-top: var(--border-2) solid var(--win95-dark-gray);
+  border-left: var(--border-2) solid var(--win95-dark-gray);
+  border-right: var(--border-2) solid var(--win95-light-gray);
+  border-bottom: var(--border-2) solid var(--win95-light-gray);
+  letter-spacing: var(--letter-spacing-wide);
   font-size: var(--font-size-base);
 }
 
 .visitor-section {
   text-align: center;
-  padding: 5px 0;
+  padding: var(--space-2-5) 0;
 }
 
 /* Button container */
 .button-group {
   text-align: center;
-  padding: var(--space-4) 0;
+  padding: var(--space-5) 0;
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-4);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* Footer section */
 .footer {
-  padding: var(--space-4) 0;
+  padding: var(--space-5) 0;
 }
