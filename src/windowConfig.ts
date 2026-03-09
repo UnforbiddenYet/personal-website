@@ -4,7 +4,7 @@ import phoneDesk from './assets/phone-desk.ico';
 import internet from './assets/the-internet.ico';
 import paint from './assets/paint.ico';
 import kodakImage from './assets/kodak-image.ico';
-import { WindowIDs, type GenericWindowConfig } from './components/types';
+import { WindowIDs, type WindowConfig } from './components/types';
 
 const WINDOW_PAINT_CONFIG = {
   title: 'Masterpiece - Paint',
@@ -12,7 +12,7 @@ const WINDOW_PAINT_CONFIG = {
   id: WindowIDs.paint,
   width: 768,
   height: 600,
-} satisfies GenericWindowConfig;
+} satisfies WindowConfig;
 
 const WINDOW_ABOUT_ME_CONFIG = {
   title: 'About Me',
@@ -20,7 +20,7 @@ const WINDOW_ABOUT_ME_CONFIG = {
   id: WindowIDs.about,
   width: 768,
   height: 750,
-} satisfies GenericWindowConfig
+} satisfies WindowConfig
 
 const WINDOW_BLOG_CONFIG = {
   title: 'My Writing',
@@ -28,7 +28,7 @@ const WINDOW_BLOG_CONFIG = {
   id: WindowIDs.blog,
   width: 600,
   height: 500,
-} satisfies GenericWindowConfig
+} satisfies WindowConfig
 
 const WINDOW_CONTACT_CONFIG = {
   title: 'Contact Me',
@@ -36,7 +36,7 @@ const WINDOW_CONTACT_CONFIG = {
   id: WindowIDs.contact,
   width: 500,
   height: 600,
-} satisfies GenericWindowConfig
+} satisfies WindowConfig
 
 const WINDOW_WEB_STUFF_CONFIG = {
   title: 'Collection (in progress)',
@@ -44,7 +44,7 @@ const WINDOW_WEB_STUFF_CONFIG = {
   id: WindowIDs.webStuff,
   width: 600,
   height: 500,
-} satisfies GenericWindowConfig
+} satisfies WindowConfig
 
 const WINDOW_IMAGE_VIEWER_CONFIG = {
   title: 'Image viewer',
@@ -52,7 +52,7 @@ const WINDOW_IMAGE_VIEWER_CONFIG = {
   id: WindowIDs.imageViewer,
   // width: 400,
   // height: 254,
-} satisfies GenericWindowConfig
+} satisfies WindowConfig
 
 export const DESKTOP_SHORTCUTS = [
   WINDOW_PAINT_CONFIG,

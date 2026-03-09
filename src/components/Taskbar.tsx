@@ -1,19 +1,24 @@
-import { useState, useEffect } from 'react';
-import styles from './Taskbar.module.css';
-import type { WindowID } from './types';
-import questionIcon from '../assets/help_question_mark.ico';
+import { useState, useEffect } from "react";
+import styles from "./Taskbar.module.css";
+import type { WindowID } from "./types";
+import questionIcon from "../assets/help_question_mark.ico";
 
 type OpenWindowConfig = {
-  title: string,
-  icon: string,
-  id: WindowID
-}
+  title: string;
+  icon: string;
+  id: WindowID;
+};
 
-export const Taskbar = ({ activeWindowId, openWindows, onClick, onInfoClick }: {
-  activeWindowId: WindowID | null,
-  openWindows: OpenWindowConfig[],
-  onClick: (id: WindowID) => void,
-  onInfoClick?: () => void,
+export const Taskbar = ({
+  activeWindowId,
+  openWindows,
+  onClick,
+  onInfoClick,
+}: {
+  activeWindowId: WindowID | null;
+  openWindows: OpenWindowConfig[];
+  onClick: (id: WindowID) => void;
+  onInfoClick?: () => void;
 }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -35,7 +40,11 @@ export const Taskbar = ({ activeWindowId, openWindows, onClick, onInfoClick }: {
       <div className={styles.taskbarWindows}>
         {/* Dynamically render a button for each "open window" */}
         {openWindows?.map((config) => (
-          <button key={config.title} className={`${styles.taskbarWindowButton} ${activeWindowId === config.id ? styles.active : ''}`} onClick={() => onClick(config.id)}>
+          <button
+            key={config.title}
+            className={`${styles.taskbarWindowButton} ${activeWindowId === config.id ? styles.active : ""}`}
+            onClick={() => onClick(config.id)}
+          >
             <img src={config.icon} alt={config.title} />
             <span>{config.title}</span>
           </button>
@@ -44,7 +53,11 @@ export const Taskbar = ({ activeWindowId, openWindows, onClick, onInfoClick }: {
 
       <div className={styles.taskbarTray}>
         {onInfoClick && (
-          <button className={styles.trayIconButton} onClick={onInfoClick} title="About this site">
+          <button
+            className={styles.trayIconButton}
+            onClick={onInfoClick}
+            title="About this site"
+          >
             <img src={questionIcon} alt="Info" className={styles.trayIcon} />
           </button>
         )}
