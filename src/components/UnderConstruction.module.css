@@ -1,6 +1,6 @@
 .container {
   background: var(--win95-white);
-  padding: var(--space-6);
+  padding: var(--space-10);
   height: 100%;
   display: flex;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .content {
   text-align: center;
-  padding: 40px;
+  padding: var(--space-20);
 
   @mixin win95-surface;
   @mixin win95-raised-soft;
@@ -18,13 +18,13 @@
 }
 
 .content h2 {
-  margin: var(--space-4) 0;
+  margin: var(--space-5) 0;
   font-size: var(--font-size-lg);
   text-transform: uppercase;
 }
 
 .content p {
-  margin: var(--space-3) 0;
+  margin: var(--space-4) 0;
   line-height: var(--line-height-normal);
 }
 
@@ -34,7 +34,7 @@
 
 .blinker {
   font-size: var(--font-size-2xl);
-  margin-top: var(--space-6);
+  margin-top: var(--space-10);
   animation: blink 1.5s infinite;
 }
 

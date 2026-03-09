@@ -11,31 +11,31 @@
 .desktop-shortcuts {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  padding: 5px 0 0;
+  gap: var(--space-10);
+  padding: var(--space-2-5) 0 0;
 
   button {
-    width: 72px;
-    min-height: 72px;
-    padding: 0 1px;
+    width: var(--size-36);
+    min-height: var(--size-36);
+    padding: 0 var(--border-1);
     background: none;
     font-family: inherit;
-    border: 1px solid transparent;
+    border: var(--border-1) solid transparent;
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: var(--space-2-5);
     align-items: center;
     cursor: pointer;
     overflow: hidden;
 
     &:focus {
-      border: 1px dashed black;
+      border: var(--border-1) dashed var(--win95-black);
     }
   }
 
   span {
-    line-height: 16px;
+    line-height: var(--line-height-normal);
     font-size: var(--font-size-sm);
     color: var(--win95-white);
     text-overflow: ellipsis;

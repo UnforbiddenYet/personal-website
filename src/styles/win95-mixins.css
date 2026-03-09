@@ -29,10 +29,10 @@
 }
 
 @define-mixin win95-sunken-content {
-  border-top: 2px solid var(--win95-dark-gray);
-  border-left: 2px solid var(--win95-dark-gray);
-  border-right: 2px solid var(--win95-light-gray);
-  border-bottom: 2px solid var(--win95-light-gray);
+  border-top: var(--border-2) solid var(--win95-dark-gray);
+  border-left: var(--border-2) solid var(--win95-dark-gray);
+  border-right: var(--border-2) solid var(--win95-light-gray);
+  border-bottom: var(--border-2) solid var(--win95-light-gray);
   box-shadow: inset 1px 1px 0 var(--win95-black), inset -1px -1px 0 var(--win95-white);
 }
 
@@ -61,14 +61,14 @@
 @define-mixin win95-section-header {
   @mixin win95-surface;
 
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-2) var(--space-5);
 
   @mixin win95-raised-soft;
 
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   text-transform: uppercase;
   font-size: var(--font-size-xs);
-  letter-spacing: 0.5px;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 @define-mixin win95-content-panel {
@@ -76,5 +76,5 @@
 
   @mixin win95-sunken-content;
 
-  padding: var(--space-4);
+  padding: var(--space-5);
 }

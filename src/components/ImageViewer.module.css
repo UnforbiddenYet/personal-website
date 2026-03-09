@@ -22,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
+  padding: var(--space-10);
   text-align: center;
   background: var(--win95-panel-bg);
 }
@@ -35,5 +35,5 @@
   font-size: var(--font-size-sm);
   color: var(--win95-muted-text);
   word-break: break-all;
-  margin-top: var(--space-4);
+  margin-top: var(--space-5);
 }
