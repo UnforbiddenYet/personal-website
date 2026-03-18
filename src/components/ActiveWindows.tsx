@@ -86,7 +86,6 @@ export function ActiveWindows() {
         }
 
         const windowProps = {
-          key: window.id,
           position: { x: window.x, y: window.y, z: window.z },
           width: window.width,
           height: window.height,
@@ -97,7 +96,7 @@ export function ActiveWindows() {
           onTitleBarMouseDown: () => windowManager.bringToFront(window.id),
         };
 
-        return <Window {...windowProps}>{renderWindowContent(window)}</Window>;
+        return <Window key={window.id} {...windowProps}>{renderWindowContent(window)}</Window>;
       })}
     </>
   );
