@@ -6,13 +6,15 @@ type Props = {
   title: string
   icon?: string
   onClose?: () => void
+  z?: number
 }
 
 export function Alert95({
   title,
   icon,
   onClose,
-  children
+  children,
+  z = 9999
 }: PropsWithChildren<Props>) {
   return (
     <Window
@@ -31,8 +33,9 @@ export function Alert95({
       position={{
         x: (window.innerWidth / 2) - (500 / 2),
         y: (window.innerHeight / 2) - (170 / 2),
-        z: 1
+        z
       }}
+      isActive
     >
       <div className={styles.content}>
         {icon && (
