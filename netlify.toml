@@ -2,7 +2,16 @@
   command = "npm run build"
   publish = "dist"
 
+[build.environment]
+  VITE_PUBLIC_POSTHOG_KEY = "phc_hkWhsFixrNlvJHN3N02yRwUoKXrJVCW2UIQFqQP7P1s"
+  VITE_PUBLIC_POSTHOG_HOST = "https://eu.i.posthog.com"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://eu-assets.i.posthog.com; connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com; img-src 'self' data: https://eu-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com"
