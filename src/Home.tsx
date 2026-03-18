@@ -19,9 +19,7 @@ export function Home() {
         {DESKTOP_SHORTCUTS.map((windowConfig) => (
           <button
             key={windowConfig.id}
-            onClick={() => {
-              windowManager.openWindow(windowConfig);
-            }}
+            onDoubleClick={() => windowManager.openWindow(windowConfig)}
           >
             <img src={windowConfig.icon} width={40} />
             <span>{windowConfig.title}</span>
