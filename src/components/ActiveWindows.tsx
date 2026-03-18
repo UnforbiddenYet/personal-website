@@ -93,10 +93,10 @@ export function ActiveWindows() {
           icon: window.icon,
           menu: config?.menu ?? [],
           controls: buildControls(),
-          onTitleBarMouseDown: () => windowManager.bringToFront(window.id),
+          onMouseDown: () => windowManager.bringToFront(window.id),
         };
 
-        return <Window key={window.id} {...windowProps}>{renderWindowContent(window)}</Window>;
+        return <Window key={window.id} isActive={windowManager.activeWindowId === window.id} {...windowProps}>{renderWindowContent(window)}</Window>;
       })}
     </>
   );

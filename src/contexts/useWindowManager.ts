@@ -40,6 +40,7 @@ export const useWindowManager = (initialWindows: AnyNewWindowType[] = []) => {
 
 
   const bringToFront = useCallback((id: WindowID) => {
+    setActiveWindowId(id);
     setWindows(prevWindows => {
       const targetWindow = prevWindows.find(w => w.id === id);
       if (!targetWindow) return prevWindows;
@@ -47,7 +48,6 @@ export const useWindowManager = (initialWindows: AnyNewWindowType[] = []) => {
         return prevWindows;
       }
       highestZIndexRef.current += 1;
-      setActiveWindowId(id);
       return prevWindows.map(w =>
         w.id === id ? { ...w, z: highestZIndexRef.current, minimized: false } : w
       );
@@ -128,6 +128,9 @@ export const useWindowManager = (initialWindows: AnyNewWindowType[] = []) => {
     setWindows(prev => prev.map(w => (w.id === id ? { ...w, x, y } : w)));
   }, []);
 
+  const clearActiveWindow = useCallback(() => {
+    setActiveWindowId(null);
+  }, []);
 
   const visibleWindows = windows.filter(w => !w.minimized);
 
@@ -140,5 +143,6 @@ export const useWindowManager = (initialWindows: AnyNewWindowType[] = []) => {
     bringToFront,
     bringToTray,
     updateWindowPosition,
+    clearActiveWindow,
   };
 };

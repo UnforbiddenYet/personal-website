@@ -19,7 +19,8 @@ type Props = {
   };
   height: number;
   width: number;
-  onTitleBarMouseDown?: () => void;
+  onMouseDown?: () => void;
+  isActive?: boolean;
 };
 
 export const Window = ({
@@ -31,11 +32,14 @@ export const Window = ({
   position,
   width,
   height,
-  onTitleBarMouseDown,
+  onMouseDown,
+  isActive,
 }: PropsWithChildren<Props>) => {
   return (
     <div
       className={styles.window}
+      data-active={isActive}
+      onMouseDown={(e) => { e.stopPropagation(); onMouseDown?.(); }}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -44,7 +48,7 @@ export const Window = ({
         height,
       }}
     >
-      <header className={styles.titleBar} onMouseDown={onTitleBarMouseDown}>
+      <header className={styles.titleBar}>
         <div className={styles.titleText}>
           {icon && <img src={icon} alt="" className={styles.titleIcon} />}
           {title}

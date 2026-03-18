@@ -14,7 +14,7 @@ export function Home() {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <div className={styles.desktop}>
+    <div className={styles.desktop} onMouseDown={() => windowManager.clearActiveWindow()}>
       <div className={styles.desktopShortcuts}>
         {DESKTOP_SHORTCUTS.map((windowConfig) => (
           <button

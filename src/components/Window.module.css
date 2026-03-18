@@ -22,15 +22,24 @@
 .title-bar {
   background: linear-gradient(
     to right,
-    var(--win95-navy),
-    var(--win95-highlight)
+    var(--win95-dark-gray),
+    var(--win95-medium-gray)
   );
-  color: var(--win95-white);
+  color: var(--win95-black);
   padding: var(--space-2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: var(--font-size-base);
+}
+
+.window[data-active="true"] .title-bar {
+  background: linear-gradient(
+    to right,
+    var(--win95-navy),
+    var(--win95-highlight)
+  );
+  color: var(--win95-white);
 }
 
 .title-text {
