@@ -1,3 +1,5 @@
+/* stylelint-disable nesting-selector-no-missing-scoping-root */
+
 /* Win95 border pattern mixins */
 
 @define-mixin win95-raised $size: 2px {
